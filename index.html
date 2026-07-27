@@ -176,6 +176,14 @@ ins.dif{background:var(--diff-ins);color:var(--diff-ins-t);text-decoration:none;
 .sub-ramo{margin-top:.7rem}
 .detalhe-org{margin-top:1rem;display:none}
 .detalhe-org.visivel{display:block}
+.tit-cargos{font-family:var(--sem-serifa);font-size:.76rem;font-weight:700;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--ardosia);margin:.9rem 0 .4rem;border-bottom:1px solid var(--linha);padding-bottom:.25rem}
+.lista-cargos{list-style:none;display:grid;gap:.4rem}
+.lista-cargos li{background:var(--nevoa);border-left:3px solid var(--ardosia);border-radius:0 6px 6px 0;padding:.5rem .75rem}
+.lista-cargos li.fora{border-left-color:var(--c-alterado);background:var(--f-alterado)}
+.nome-cargo{font-weight:700;font-size:.88rem;color:var(--texto);margin-right:.4rem}
+.ref-cargo{font-size:.74rem;color:var(--texto-suave);white-space:nowrap}
+.desc-cargo{display:block;font-size:.85rem;color:var(--texto);margin-top:.15rem}
 .legenda-org{display:flex;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:var(--texto-suave);margin-top:.9rem}
 .legenda-org span{display:inline-flex;align-items:center;gap:.35rem}
 .amostra{width:14px;height:14px;border-radius:4px;display:inline-block}
@@ -423,7 +431,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
 <!-- ================= 3. ESTRUTURA ORGÂNICA ================= -->
 <section id="sep-estrutura" class="separador" role="tabpanel" aria-label="Estrutura orgânica antes e depois">
   <h2>Estrutura orgânica: antes e depois</h2>
-  <p class="intro-seccao">Selecione qualquer caixa para ver a composição, as competências principais e o que muda. A Assembleia Geral permanece o órgão soberano em ambos os desenhos.</p>
+  <p class="intro-seccao">Selecione qualquer caixa para ver a composição, os cargos que a integram, as competências principais e o que muda. A Assembleia Geral permanece o órgão soberano em ambos os desenhos.</p>
 
   <div class="grelha-org">
     <div class="cartao arvore">
@@ -1625,19 +1633,96 @@ const QUESTOES = [
  ref:'Art. 26.º, n.os 8 e 10', origem:'identificada na leitura da proposta'},
 ];
 
-/* ===== Detalhes dos organogramas ===== */
+/* ===== Detalhes dos organogramas =====
+   cargos: [nome, descrição, referência, fora?] — «fora» assinala quem não integra o órgão. */
 const ORG_INFO = {
-'v-ag':{t:'Assembleia Geral (vigente)',c:'Composição: todos os membros não impedidos de participar (art. 16.º, n.º 1). Competências principais: eleger o Presbitério, a CFP e a Mesa; aprovar contas, orçamento e Regulamento Interno; aprovar a exclusão de membros; alterar os Estatutos (¾). Órgão soberano da associação.',m:'Na proposta mantém a soberania e ganha competências novas: confirmar oficiais e diáconos e deliberar sobre a cessação do Tesoureiro (art. 24.º).'},
-'v-presb':{t:'Presbitério (vigente)',c:'Composição: pluralidade de presbíteros reconhecidos pela igreja (art. 17.º, n.º 2). Competências: governo e direção da igreja, representação, atos de administração geral — incluindo gerir pagamentos e receber ofertas. A segunda assinatura da Igreja é do representante do Conselho de Diáconos (n.º 5).',m:'Na proposta assume expressamente a gestão financeira e patrimonial, com pareceres prévios obrigatórios da CFP; a segunda assinatura passa a outro membro do Presbitério (art. 25.º).'},
-'v-cd':{t:'Conselho de Diáconos (vigente) — desaparece como órgão',c:'Composição: por inerência, os responsáveis ou líderes dos departamentos, ministérios ou comissões (art. 18.º, n.º 2). Competências: organização e funcionamento dos departamentos segundo orientação do Presbitério. Nomeia o seu Representante, que detém a segunda assinatura da Igreja.',m:'É eliminado como órgão social. Os diáconos passam a oficiais confirmados pela congregação, por áreas de serviço, reunindo sob convocação e presidência do Presbitério; o cargo de Representante dos Diáconos é extinto (art. 13.º; tabela de decisões).'},
-'v-cfp':{t:'Comissão de Finanças e Património (vigente)',c:'Composição: mínimo de três elementos (art. 19.º, n.º 11). Competências: responsabilidade da gestão financeira e patrimonial; elabora a proposta de orçamento; autonomia executiva até 10% do orçamento com recurso ao Fundo de Reserva; pareceres sobre atos acima de 10% da receita média; apoia RH, equipamentos e frota.',m:'Na proposta deixa de gerir: passa a órgão consultivo e de fiscalização, com pareceres obrigatórios não vinculativos e acesso irrestrito à documentação (art. 26.º).'},
-'v-cc':{t:'Conselho Consultivo (vigente) — omisso na lista de órgãos',c:'Composição: mínimo de 5 pessoas de idoneidade reconhecida, membros ou não da IEL, eleitas pela AG por proposta do Presbitério (art. 20.º). Competências: velar pelo património moral e espiritual; emitir pareceres e aconselhar quando solicitado. Está regulado no artigo 20.º, mas não consta da lista de órgãos do artigo 7.º.',m:'A proposta corrige a omissão: passa a constar da lista de órgãos da associação (art. 15.º).'},
-'p-ag':{t:'Assembleia Geral (proposta)',c:'Mantém-se o órgão soberano (art. 24.º). Além das competências atuais, passa a: confirmar a idoneidade e vocação dos candidatos ao oficialato; eleger o Pastor Efetivo, o Pastor Auxiliar e os presbíteros regentes; confirmar os diáconos; e deliberar sobre a cessação de funções do Tesoureiro.',m:'Ganha um mecanismo de vigilância: qualquer membro reporta desconformidades com os Estatutos, e o Presbitério informa a Assembleia em cada reunião até à sanação (n.º 11).'},
-'p-presb':{t:'Presbitério (proposta)',c:'Composição: presbíteros docentes e regentes eleitos nos termos do Capítulo III; preside o Pastor Efetivo (art. 25.º, n.os 2 e 3). Competências: governo, representação, administração corrente e ordinária e gestão financeira e patrimonial — autoriza despesas, elabora e executa o orçamento —, com pareceres prévios obrigatórios da CFP. Convoca e preside às reuniões diaconais.',m:'A gestão financeira, hoje formalmente da CFP, passa expressamente para o Presbitério; a execução financeira é confiada ao Tesoureiro (n.º 9).'},
-'p-cfp':{t:'Comissão de Finanças e Património (proposta)',c:'Órgão consultivo e de fiscalização, sem poderes de gestão (art. 26.º, n.º 1). Pareceres escritos, prévios e obrigatórios (não vinculativos; divergência fundamentada em ata); exame no mínimo trimestral com acesso irrestrito; parecer autónomo sobre as contas; comunica irregularidades ao Presbitério e, sem sanação, à Assembleia Geral. Os seus membros não podem exercer tesouraria nem movimentar contas.',m:'Deixa de gerir e de ter autonomia executiva; ganha independência face a quem gere e um mandato claro de fiscalização.'},
-'p-cc':{t:'Conselho Consultivo (proposta)',c:'Regime materialmente idêntico ao vigente (art. 27.º): órgão não diretivo, mínimo de 5 pessoas, eleitas pela AG por proposta do Presbitério, mandato de 3 anos; vela pelo património moral e espiritual e aconselha quando solicitado.',m:'Passa a constar da lista de órgãos da associação (art. 15.º), corrigindo a omissão do texto vigente.'},
-'p-diac':{t:'Diáconos (proposta) — ofício, não órgão',c:'Ofício de serviço exercido por áreas: cuidado dos necessitados, hospitalidade, tesouraria, recursos materiais e instalações, apoio ao culto, coordenação de ministérios (art. 13.º, n.º 5). Propostos pelo Presbitério e confirmados pela Assembleia Geral; ordenados pelo Presbitério; mandato de 3 anos; aberto a ambos os sexos. Reúnem sob convocação e presidência do Presbitério, sem poder deliberativo próprio.',m:'Substituem o Conselho Diaconal: cada diácono responde perante o Presbitério pela sua área; a coordenação da execução é diaconal, a orientação estratégica é do Presbitério.'},
-'p-tes':{t:'Tesoureiro (proposta) — figura nova',c:'Diácono confirmado pela Assembleia Geral para a área da tesouraria (art. 25.º, n.º 9). Valida os pagamentos autorizados pelo Presbitério, assegura o depósito das receitas, supervisiona os registos e reconcilia contas. Não pode ser membro do Presbitério nem da CFP; a tesouraria é sempre gratuita; não coordena outra área.',m:'Cessação só por deliberação da Assembleia Geral (ou a pedido, impossibilidade ou termo do mandato); suspensão preventiva pelo Presbitério com convocação obrigatória da AG em 30 dias e caducidade aos 60 (n.os 9.6 a 9.9).'}
+'v-ag':{t:'Assembleia Geral (vigente)',c:'Órgão soberano, constituído por todos os membros não impedidos de participar (art. 16.º, n.º 1). Competências principais: eleger o Presbitério, a CFP e a Mesa; aprovar contas, orçamento e Regulamento Interno; aprovar a exclusão de membros; alterar os Estatutos (¾).',
+cargos:[
+['Presidente da Mesa','Dirige os trabalhos, no âmbito da Mesa; pode convocar a Assembleia; é perante ele que se toma posse.','art. 16.º, n.os 4 e 5; art. 9.º, n.º 2'],
+['Vice-presidente da Mesa','Integra a Mesa; sem competências próprias distintas no texto.','art. 16.º, n.º 2'],
+['Secretário da Mesa','Integra a Mesa, nos mesmos termos.','art. 16.º, n.º 2'],
+['Substitutos','Eleitos de entre os membros presentes em caso de falta ou impedimento; cessam funções no termo da reunião.','art. 16.º, n.º 3']],
+cargosNota:'A Mesa confere posse aos membros dos órgãos eleitos (art. 16.º, n.º 4, b) — na proposta, também aos oficiais.',
+m:'Na proposta mantém a soberania e ganha competências novas: confirmar oficiais e diáconos e deliberar sobre a cessação do Tesoureiro (art. 24.º).'},
+'v-presb':{t:'Presbitério (vigente)',c:'Direção da Igreja, composta por uma pluralidade de membros eleitos de entre os presbíteros reconhecidos pela igreja segundo o padrão bíblico do Anexo 2 (art. 17.º, n.º 2). Competências: governo e direção, representação e atos de administração geral — incluindo gerir pagamentos e receber ofertas.',
+cargos:[
+['Presbíteros','Uma pluralidade de membros, sem distinção entre docentes e regentes. Excecionalmente, existindo um só presbítero reconhecido, a direção é constituída por esse único membro.','art. 17.º, n.º 2'],
+['Quem preside','A responsabilidade de presidir recai sobre o Presbítero com o dom e função pastoral; havendo vários, faz-se nomeação entre pares.','art. 17.º, n.º 3'],
+['Responsável do Presbitério','A sua assinatura é sempre necessária para vincular a Igreja; a segunda assinatura é a do representante do Conselho de Diáconos.','art. 17.º, n.º 5'],
+['Representante','A Igreja é representada ativa e passivamente, em juízo e fora dele, por intermédio do seu Representante.','art. 17.º, n.º 6, c)']],
+cargosNota:'O texto vigente não prevê Pastor Efetivo, Pastor Auxiliar nem Assistente Pastoral, nem distingue presbíteros docentes de regentes — categorias que a proposta introduz no Capítulo III.',
+m:'Na proposta assume expressamente a gestão financeira e patrimonial, com pareceres prévios obrigatórios da CFP; a segunda assinatura passa a outro membro do Presbitério (art. 25.º); e as categorias de pastor passam a ter regime escrito (art. 10.º).'},
+'v-cd':{t:'Conselho de Diáconos (vigente) — desaparece como órgão',c:'Órgão que reúne os diáconos. Compete-lhe a organização e funcionamento dos diferentes departamentos e áreas de ação, segundo orientação do Presbitério, operando em estreita colaboração com este e fazendo a ligação com a restante congregação (art. 18.º).',
+cargos:[
+['Membros por inerência','São membros, por inerência, os responsáveis ou líderes dos diversos departamentos, ministérios ou comissões — sem qualquer pronúncia da Assembleia Geral.','art. 18.º, n.º 2'],
+['Representante do Conselho Diaconal','Nomeado pelo próprio Conselho. É a ele que cabe a segunda assinatura em todos os atos e contratos da Igreja — a via pela qual a tesouraria migrou de facto para este cargo.','art. 18.º, n.º 5; art. 17.º, n.º 5', true]],
+cargosNota:'A palavra «tesoureiro» não consta dos Estatutos vigentes: a função não estava atribuída a ninguém (Anexo Técnico, §4).',
+m:'É eliminado como órgão social. Os diáconos passam a oficiais confirmados pela congregação, por áreas de serviço, reunindo sob convocação e presidência do Presbitério; o cargo de Representante dos Diáconos é extinto (art. 13.º; tabela de decisões).'},
+'v-cfp':{t:'Comissão de Finanças e Património (vigente)',c:'Órgão com a responsabilidade da gestão financeira e patrimonial (art. 19.º, n.º 1). Elabora a proposta de orçamento; dispõe de autonomia executiva para alterar a execução orçamental até 10% e recorrer ao Fundo de Reserva até 2/3; dá pareceres sobre atos acima de 10% da receita média; apoia a gestão de recursos humanos, equipamentos e frota.',
+cargos:[
+['Membros — mínimo de três','Requisitos: ser membro da IEL há mais de 3 anos, boa reputação financeira, experiência em gestão financeira e visão alargada da igreja e do Reino.','art. 19.º, n.os 11 a 11.3'],
+['Representante da CFP','Nomeado pela própria Comissão.','art. 19.º, n.º 11'],
+['Conselheiros e terceiros','No exercício do seu caráter consultivo, tem conselheiros com experiência no assunto em análise, podendo recorrer pontualmente à colaboração de terceiros.','art. 19.º, n.os 8 e 8.1']],
+cargosNota:'O texto vigente não impede os membros da CFP de exercerem funções de tesouraria ou de movimentarem contas — impedimento que a proposta introduz no art. 26.º, n.º 8.',
+m:'Na proposta deixa de gerir: passa a órgão consultivo e de fiscalização, com pareceres obrigatórios não vinculativos e acesso irrestrito à documentação (art. 26.º).'},
+'v-cc':{t:'Conselho Consultivo (vigente) — omisso na lista de órgãos',c:'Órgão não diretivo que vela pelo património moral e espiritual da igreja, emite parecer e aconselha os órgãos sociais quando solicitado. Está regulado no artigo 20.º, mas não consta da lista de órgãos do artigo 7.º.',
+cargos:[
+['Membros — mínimo de cinco','Pessoas de idoneidade moral e espiritual reconhecidas pela Igreja, representativas da diversidade cristã evangélica, de diferentes idades e sexos, sejam ou não membros da IEL.','art. 20.º, n.os 1 e 3'],
+['Designação e mandato','Eleitos pela Assembleia Geral, por proposta do Presbitério, para um mandato de 3 anos.','art. 20.º, n.º 4']],
+cargosNota:'Sendo não diretivo, não tem cargos internos previstos. Reúne quando convocado pelo Presbitério, a pedido de 10 membros da IEL ou de 3 dos seus membros (art. 20.º, n.º 2).',
+m:'A proposta corrige a omissão: passa a constar da lista de órgãos da associação (art. 15.º).'},
+'p-ag':{t:'Assembleia Geral (proposta)',c:'Mantém-se o órgão soberano, constituída por todos os membros que estatutariamente nela não estejam impedidos de participar (art. 24.º, n.º 1). Além das competências atuais, passa a: confirmar a idoneidade e vocação dos candidatos ao oficialato; eleger o Pastor Efetivo, o Pastor Auxiliar e os presbíteros regentes; confirmar os diáconos; e deliberar sobre a cessação de funções do Tesoureiro.',
+cargos:[
+['Presidente da Mesa','Dirige, orienta e disciplina os trabalhos, no âmbito da Mesa; pode convocar a Assembleia. É perante ele que os mandatos se iniciam, com a tomada de posse.','art. 24.º, n.os 4 e 5; art. 17.º, n.º 2'],
+['Vice-presidente da Mesa','Integra a Mesa. Os Estatutos não lhe atribuem competências próprias distintas — as competências são da Mesa enquanto órgão.','art. 24.º, n.º 2'],
+['Secretário da Mesa','Integra a Mesa, nos mesmos termos.','art. 24.º, n.º 2'],
+['Substitutos','Na falta ou impedimento de qualquer membro da Mesa, a Assembleia elege substitutos de entre os membros presentes, que cessam funções no termo da reunião.','art. 24.º, n.º 3']],
+cargosNota:'Compete à Mesa dirigir os trabalhos e representar a Assembleia, decidir sobre protestos e reclamações relativos aos atos eleitorais e conferir posse aos membros dos órgãos eleitos e aos oficiais (art. 24.º, n.º 4).',
+m:'A Mesa passa a conferir posse também aos oficiais, e não só aos membros dos órgãos eleitos (n.º 4, b). O órgão ganha ainda um mecanismo de vigilância: qualquer membro reporta desconformidades com os Estatutos, e o Presbitério informa a Assembleia em cada reunião até à sanação (n.º 11).'},
+'p-presb':{t:'Presbitério (proposta)',c:'Composto por uma pluralidade de membros, eleitos de entre os presbíteros docentes e regentes reconhecidos nos termos do Capítulo III (art. 25.º, n.º 2). Competências: governo, representação, administração corrente e ordinária e gestão financeira e patrimonial — autoriza despesas, elabora e executa o orçamento —, com pareceres prévios obrigatórios da CFP. Convoca e preside às reuniões diaconais.',
+cargos:[
+['Presbíteros docentes — Pastor Efetivo','Ministro do Evangelho eleito pela Assembleia Geral e instalado na Igreja, a quem cabe presidir ao Presbitério. Mandato de três anos, renovável. Cabe-lhe ainda a supervisão laboral dos funcionários e a orientação e supervisão da liturgia, que lhe é privativa.','art. 10.º, n.os 2, 5 a) e 8; art. 9.º, n.º 5; art. 25.º, n.º 3'],
+['Presbíteros docentes — Pastor Auxiliar','Ministro que, sem jurisdição própria sobre a Igreja, coadjuva o Pastor Efetivo sob a sua direção, com direito de voto na Assembleia Geral. Proposto pelo Presbitério, ouvido o Pastor Efetivo, e eleito pela Assembleia Geral por três anos, renovável.','art. 10.º, n.os 3 e 5 b)'],
+['Presbíteros regentes','Representantes imediatos dos membros, por estes eleitos e ordenados, para exercer com o pastor o governo e a disciplina. Ministram os sacramentos, tomam parte na ordenação de oficiais e podem representar a Igreja perante instituições associativas quando designados.','art. 12.º'],
+['Responsável do Presbitério','A sua assinatura é sempre necessária para vincular a Igreja em atos e contratos; é também uma das duas autorizações exigidas para movimentar contas bancárias, a par do Tesoureiro. É designado no âmbito da lista que o Presbitério propõe à Assembleia Geral.','art. 25.º, n.os 5, 6 f) e 9.3'],
+['Representante','A Igreja é representada ativa e passivamente, em juízo e fora dele, por intermédio do seu Representante.','art. 25.º, n.º 6, c)'],
+['Assistente Pastoral','Membro que, aspirando ao presbiterato, exerce funções de apoio ao ministério pastoral sob a direção do Pastor Efetivo. Não é oficial ordenado, NÃO INTEGRA o Presbitério e não tem direito de voto neste órgão — pode participar nas reuniões quando convidado. Designação por um ano, renovável.','art. 10.º, n.os 4 a 4.4', true]],
+cargosNota:'Todos os presbíteros, docentes e regentes, participam em igualdade no governo colegial (art. 7.º, n.º 3). Havendo múltiplos presbíteros docentes, a presidência é definida por nomeação entre pares (art. 25.º, n.º 3). Excecionalmente, existindo um só presbítero reconhecido, a direção é constituída por esse único membro (n.º 2).',
+m:'A gestão financeira, hoje formalmente da CFP, passa expressamente para o Presbitério; a execução financeira é confiada ao Tesoureiro (n.º 9). A segunda assinatura da Igreja deixa de ser do Representante do Conselho de Diáconos e passa a ser de outro membro do Presbitério (n.º 5). As categorias de pastor e a figura do Assistente Pastoral passam a ter regime escrito (art. 10.º).'},
+'p-cfp':{t:'Comissão de Finanças e Património (proposta)',c:'Órgão consultivo e de fiscalização, sem poderes de gestão (art. 26.º, n.º 1). Pareceres escritos, prévios e obrigatórios (não vinculativos; divergência fundamentada em ata); exame no mínimo trimestral com acesso irrestrito; parecer autónomo sobre as contas; comunica irregularidades ao Presbitério e, sem sanação, à Assembleia Geral.',
+cargos:[
+['Membros — mínimo de três','Eleitos pela Assembleia Geral. Requisitos: ser membro da IEL há mais de 3 anos, boa reputação financeira, experiência em gestão financeira e visão alargada da igreja e do Reino.','art. 24.º, n.º 10 b); art. 26.º, n.os 9 a 9.3'],
+['Representante da CFP','Nomeado pela própria Comissão de entre os seus membros.','art. 26.º, n.º 9'],
+['Conselheiros e terceiros','A pedido do Presbitério, a CFP realiza estudos e análises financeiras, podendo integrar conselheiros com experiência na matéria e recorrer pontualmente à colaboração de terceiros.','art. 26.º, n.º 6']],
+cargosNota:'Incompatibilidade de função: os membros da CFP não podem exercer funções de tesouraria ou de execução financeira, nem movimentar contas bancárias (art. 26.º, n.º 8). Daí que o Tesoureiro não possa integrar a CFP — por movimentar contas, não por ser diácono.',
+m:'Deixa de gerir e de ter autonomia executiva; ganha independência face a quem gere e um mandato claro de fiscalização.'},
+'p-cc':{t:'Conselho Consultivo (proposta)',c:'Regime materialmente idêntico ao vigente (art. 27.º): órgão não diretivo que vela pelo património moral e espiritual da igreja, emite parecer sobre questões da vida da igreja e aconselha os órgãos sociais, sempre que solicitado.',
+cargos:[
+['Membros — mínimo de cinco','Pessoas de idoneidade moral e espiritual reconhecidas pela Igreja, representativas da diversidade cristã evangélica, de diferentes idades e sexos, que reconheçam o objeto da Igreja — sejam ou não membros da IEL.','art. 27.º, n.os 1 e 3'],
+['Designação e mandato','Eleitos pela Assembleia Geral, por proposta do Presbitério, para um mandato de 3 anos.','art. 27.º, n.º 4']],
+cargosNota:'Sendo um órgão não diretivo, os Estatutos não lhe preveem cargos internos nem presidência própria. Reúne sempre que convocado pelo Presbitério, a pedido de um mínimo de 10 membros da IEL ou de 3 dos seus próprios membros (art. 27.º, n.º 2).',
+m:'Passa a constar da lista de órgãos da associação (art. 15.º), corrigindo a omissão do texto vigente.'},
+'p-diac':{t:'Diáconos (proposta) — ofício, não órgão',c:'Ofício de serviço exercido por áreas. Propostos pelo Presbitério e confirmados pela Assembleia Geral por votação secreta; ordenados e investidos pelo Presbitério; mandato de 3 anos; aberto a ambos os sexos. Reúnem sob convocação e presidência do Presbitério, sem poder deliberativo próprio.',
+cargosTitulo:'Áreas de serviço diaconal',
+cargos:[
+['Cuidado dos necessitados','Necessitados, doentes, idosos e viúvas. Os diáconos agem com discrição, mantêm registo escrito dos auxílios e à congregação são comunicados apenas os totais, sem identificar beneficiários nem casos.','art. 13.º, n.os 5 e 9'],
+['Hospitalidade e acolhimento','Área de serviço diaconal.','art. 13.º, n.º 5'],
+['Tesouraria','Área de serviço diaconal cujo titular é o Tesoureiro. O seu exercício é sempre gratuito.','art. 13.º, n.os 5 e 19; art. 25.º, n.º 9'],
+['Recursos materiais e instalações','Área de serviço diaconal.','art. 13.º, n.º 5'],
+['Apoio prático ao culto e às ordenanças','Área de serviço diaconal.','art. 13.º, n.º 5'],
+['Coordenação dos ministérios e departamentos','Passa a ser modo típico de exercício do diaconato.','art. 13.º, n.º 5']],
+cargosNota:'O número de diáconos é variável, em função das áreas que careçam de coordenação; o Presbitério propõe à Assembleia Geral a criação, fusão ou extinção de áreas (art. 13.º, n.º 6). As descrições de funções de cada área constam do Regulamento Interno (n.º 7).',
+m:'Substituem o Conselho Diaconal: cada diácono responde perante o Presbitério pela sua área; a coordenação da execução é diaconal, a orientação estratégica é do Presbitério.'},
+'p-tes':{t:'Tesoureiro (proposta) — figura nova',c:'Diácono confirmado pela Assembleia Geral para a área da tesouraria (art. 25.º, n.º 9). Valida os pagamentos previamente autorizados pelo Presbitério — verificando autorização, documento de despesa e cabimento orçamental —, assegura o recebimento e depósito das receitas, supervisiona os registos e reconcilia as contas.',
+cargosTitulo:'Regime, limites e apoio',
+cargos:[
+['Incompatibilidades','Não pode ser membro do Presbitério nem da Comissão de Finanças e Património, nem coordenar outra área de serviço diaconal.','art. 25.º, n.os 9 e 9.3.1'],
+['Gratuitidade','A tesouraria é sempre gratuita: não pode ser remunerado a qualquer título pela Igreja, nem acumular com funções remuneradas de secretariado ou de execução financeira.','art. 13.º, n.º 19'],
+['Limites de poder','Não pode autorizar despesa nem contrair obrigações em nome da Igreja, salvo despesas correntes até ao limite do Regulamento Interno. Os pagamentos em que seja interessado são autorizados por dois presbíteros.','art. 25.º, n.os 9.4 e 9.3.2'],
+['Secretariado','Os atos materiais de execução — preparação e processamento de pagamentos, organização documental — podem ser cometidos ao secretariado, sob supervisão funcional do Tesoureiro, sem transferir a responsabilidade que a este cabe.','art. 25.º, n.º 9.2; art. 10.º, n.º 8'],
+['Substituto interino','Durante uma suspensão preventiva, o Presbitério designa quem assegure interinamente a função, mantendo-se a exigência de dupla autorização bancária.','art. 25.º, n.º 9.9']],
+cargosNota:'Presta contas à CFP com periodicidade não superior a três meses, com balancete, livros, comprovativos e extratos, independentemente de instrução do Presbitério (art. 25.º, n.º 9.5).',
+m:'Cessação só por deliberação da Assembleia Geral (ou a pedido, impossibilidade ou termo do mandato); suspensão preventiva pelo Presbitério com convocação obrigatória da AG em 30 dias e caducidade aos 60 (n.os 9.6 a 9.9).'}
 };
 
 /* ===== Textos integrais dos anexos doutrinários =====
@@ -1993,10 +2078,19 @@ document.addEventListener('keydown',e=>{
 /* ---------- organogramas ---------- */
 document.querySelectorAll('[data-org]').forEach(b=>b.addEventListener('click',()=>{
   const info = ORG_INFO[b.dataset.org]; if(!info) return;
+  let h = `<h4 style="margin-bottom:.35rem">${esc(info.t)}</h4><p style="font-size:.88rem">${esc(info.c)}</p>`;
+  if(info.cargos && info.cargos.length){
+    h += `<div class="tit-cargos">${esc(info.cargosTitulo||'Cargos e composição')}</div><ul class="lista-cargos">`;
+    h += info.cargos.map(([nome,desc,ref,fora])=>
+      `<li${fora?' class="fora"':''}><span class="nome-cargo">${esc(nome)}</span>
+        <span class="ref-cargo">${esc(ref)}</span>
+        <span class="desc-cargo">${esc(desc)}</span></li>`).join('');
+    h += '</ul>';
+    if(info.cargosNota) h += `<p class="mini suave" style="margin-top:.5rem">${esc(info.cargosNota)}</p>`;
+  }
+  h += `<p style="font-size:.88rem;margin-top:.7rem"><strong>O que muda: </strong>${esc(info.m)}</p>`;
   $('#detalheOrg').classList.add('visivel');
-  $('#detalheOrg').innerHTML = `<h4 style="margin-bottom:.35rem">${esc(info.t)}</h4>
-    <p style="font-size:.88rem">${esc(info.c)}</p>
-    <p style="font-size:.88rem"><strong>O que muda: </strong>${esc(info.m)}</p>`;
+  $('#detalheOrg').innerHTML = h;
   $('#detalheOrg').scrollIntoView({behavior:'smooth',block:'nearest'});
 }));
 
