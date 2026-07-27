@@ -242,6 +242,13 @@ details.acordeao summary::-webkit-details-marker{display:none}
 .botao-doc:hover{border-color:var(--ardosia);color:var(--ardosia-escura)}
 .botao-doc[aria-selected="true"]{background:var(--fundo-escuro);border-color:var(--fundo-escuro);color:#fff}
 .leitura{max-width:56rem;padding:1.3rem clamp(1rem,3vw,2rem)}
+#painelDocs.duplo{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+#painelDocs.duplo .leitura{max-width:none;max-height:76vh;overflow-y:auto;position:relative}
+#painelDocs.duplo .cab-doc{position:sticky;top:-1.3rem;background:#fff;z-index:1;padding-top:.4rem}
+@media (max-width:960px){
+  #painelDocs.duplo{grid-template-columns:1fr}
+  #painelDocs.duplo .leitura{max-height:60vh}
+}
 .leitura .cab-doc{border-bottom:2px solid var(--linha);padding-bottom:.8rem;margin-bottom:1rem}
 .leitura .cab-doc h3{margin-top:0}
 .leitura .cap-doc{font-family:var(--serifada);font-weight:700;font-size:1.05rem;color:var(--ardosia);
@@ -713,8 +720,10 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
   <div class="comutador" role="tablist" aria-label="Escolher documento">
     <button class="botao-doc" data-doc="vigente" aria-selected="true">Estatutos vigentes (íntegra)</button>
     <button class="botao-doc" data-doc="proposta" aria-selected="false">Proposta de revisão (íntegra)</button>
+    <button class="botao-doc" data-doc="duplo" aria-selected="false">Lado a lado</button>
   </div>
 
+  <div id="painelDocs">
   <div id="docVigente" class="cartao leitura">
     <div class="cab-doc">
       <h3>Estatutos da Igreja Evangélica do Livramento — texto vigente</h3>
@@ -729,6 +738,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
       <p class="mini suave">Proposta de revisão apresentada por <strong>José Eduardo Patrocínio</strong>: 29 artigos, Anexo 1 (Declaração de Fé, substituído), Anexo 2 (Requisitos dos Oficiais, alargado) e Anexo 3 (Pacto de Membrasia, novo). Documento de trabalho — não é estatuto em vigor; recomenda-se revisão jurídica antes da submissão. A Nota de leitura e o Anexo Técnico da proposta estão refletidos nos restantes separadores deste painel.</p>
     </div>
     <div id="leituraProposta"></div>
+  </div>
   </div>
 
   <div class="painel-autoria" style="margin-top:1.2rem">
@@ -2018,8 +2028,10 @@ function renderNos(nos){
 })();
 document.querySelectorAll('.botao-doc').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.botao-doc').forEach(x=>x.setAttribute('aria-selected', String(x===b)));
-  $('#docVigente').hidden = b.dataset.doc!=='vigente';
-  $('#docProposta').hidden = b.dataset.doc!=='proposta';
+  const modo = b.dataset.doc;
+  $('#painelDocs').classList.toggle('duplo', modo==='duplo');
+  $('#docVigente').hidden = !(modo==='vigente' || modo==='duplo');
+  $('#docProposta').hidden = !(modo==='proposta' || modo==='duplo');
 }));
 </script>
 </body>
