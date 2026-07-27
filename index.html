@@ -266,6 +266,28 @@ details.acordeao summary::-webkit-details-marker{display:none}
 .leitura .ref-doc{font-size:.8rem;color:var(--texto-suave);font-style:italic}
 .leitura .nota-doc{font-size:.82rem;color:var(--texto-suave);background:var(--nevoa);border-radius:6px;padding:.5rem .7rem;margin:.5rem 0}
 
+/* ---------- perfis ---------- */
+.cab-perfil{border-left:5px solid var(--ardosia);margin-bottom:.8rem}
+.cab-perfil h3{margin:0 0 .2rem}
+.ponto-perfil{margin-bottom:.55rem;border-left:3px solid var(--linha)}
+.ponto-perfil h4{font-size:.95rem;margin-bottom:.2rem}
+.ponto-perfil p{font-size:.88rem}
+.ponto-perfil .ref-ponto{display:inline-block;margin-top:.3rem;font-size:.75rem;color:var(--texto-suave);
+  background:var(--nevoa);border-radius:99px;padding:.1rem .55rem}
+.selo-fonte{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+  padding:.12rem .5rem;border-radius:99px;background:var(--nevoa);color:var(--texto-suave);border:1px solid var(--linha)}
+.selo-fonte.doc{background:var(--f-novo);color:var(--c-novo);border-color:#bcd9c7}
+
+/* ---------- glossário ---------- */
+.grupo-gloss{margin:1.3rem 0 .5rem;font-family:var(--serifada);font-size:1.05rem;color:var(--ardosia);
+  border-bottom:1px solid var(--linha);padding-bottom:.25rem}
+.lista-gloss{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.termo{background:#fff;border:1px solid var(--linha);border-left:3px solid var(--ardosia);border-radius:0 8px 8px 0;padding:.6rem .8rem}
+.termo dt{font-weight:700;font-size:.92rem;color:var(--texto);margin-bottom:.15rem}
+.termo dd{font-size:.86rem;color:var(--texto);margin:0}
+.termo .ref-termo{display:block;margin-top:.3rem;font-size:.75rem;color:var(--texto-suave)}
+mark{background:#F3E6C4;color:inherit;border-radius:2px;padding:0 1px}
+
 /* ---------- rodapé ---------- */
 footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;font-size:.82rem;
   padding:1rem 1.2rem;margin-top:2rem;border-top:3px solid var(--ardosia)}
@@ -310,8 +332,10 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
   <button role="tab" data-sep="financas" aria-selected="false">4 · Controlo financeiro</button>
   <button role="tab" data-sep="oficios" aria-selected="false">5 · Ofícios</button>
   <button role="tab" data-sep="fe" aria-selected="false">6 · Fé e Pacto</button>
-  <button role="tab" data-sep="questoes" aria-selected="false">7 · Questões em aberto</button>
-  <button role="tab" data-sep="integrais" aria-selected="false">8 · Textos integrais</button>
+  <button role="tab" data-sep="perfis" aria-selected="false">7 · O que muda para mim</button>
+  <button role="tab" data-sep="questoes" aria-selected="false">8 · Questões em aberto</button>
+  <button role="tab" data-sep="glossario" aria-selected="false">9 · Glossário</button>
+  <button role="tab" data-sep="integrais" aria-selected="false">10 · Textos integrais</button>
 </nav>
 
 <main>
@@ -713,7 +737,15 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
   </div>
 </section>
 
-<!-- ================= 7. QUESTÕES EM ABERTO ================= -->
+<!-- ================= 7. O QUE MUDA PARA MIM ================= -->
+<section id="sep-perfis" class="separador" role="tabpanel" aria-label="O que muda para mim">
+  <h2>O que muda para mim</h2>
+  <p class="intro-seccao">A mesma proposta lida do lugar de cada pessoa. Escolha o perfil que mais se aproxima do seu; cada ponto indica o artigo em que se funda. Os três primeiros perfis constam do Anexo Técnico, §3; os restantes resumem o que os artigos determinam para essas funções.</p>
+  <div id="botoesPerfil" class="comutador" role="tablist" aria-label="Escolher perfil"></div>
+  <div id="painelPerfil" aria-live="polite"></div>
+</section>
+
+<!-- ================= 8. QUESTÕES EM ABERTO ================= -->
 <section id="sep-questoes" class="separador" role="tabpanel" aria-label="Questões em aberto e próximos passos">
   <h2>Questões em aberto</h2>
   <p class="intro-seccao">A própria proposta assinala matérias por decidir (Anexo Técnico, §6); acresce uma questão identificada na leitura da proposta. Cada cartão indica a sua origem. Todas são apresentadas como estão: <strong>em aberto</strong>, não resolvidas.</p>
@@ -753,7 +785,18 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
   </ol>
 </section>
 
-<!-- ================= 8. TEXTOS INTEGRAIS ================= -->
+<!-- ================= 9. GLOSSÁRIO ================= -->
+<section id="sep-glossario" class="separador" role="tabpanel" aria-label="Glossário">
+  <h2>Glossário</h2>
+  <p class="intro-seccao">Os termos que aparecem nos Estatutos e na proposta, explicados em linguagem corrente, com indicação do artigo onde constam. Destina-se a quem não tem formação jurídica — nenhuma definição substitui o texto dos documentos.</p>
+  <div class="barra-filtros">
+    <input type="search" id="pesquisaGloss" placeholder="Procurar um termo…" aria-label="Procurar um termo no glossário">
+  </div>
+  <div id="contagemGloss" class="contagem-lista" aria-live="polite"></div>
+  <div id="listaGlossario"></div>
+</section>
+
+<!-- ================= 10. TEXTOS INTEGRAIS ================= -->
 <section id="sep-integrais" class="separador" role="tabpanel" aria-label="Textos integrais">
   <h2>Textos integrais</h2>
   <p class="intro-seccao">Leitura corrida dos dois documentos, artigo a artigo, tal como constam das fontes. A comparação, os realces e as notas explicativas encontram-se nos restantes separadores.</p>
@@ -762,6 +805,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
     <button class="botao-doc" data-doc="vigente" aria-selected="true">Estatutos vigentes (íntegra)</button>
     <button class="botao-doc" data-doc="proposta" aria-selected="false">Proposta de revisão (íntegra)</button>
     <button class="botao-doc" data-doc="duplo" aria-selected="false">Lado a lado</button>
+    <button class="botao-doc" data-doc="tecnico" aria-selected="false">Anexo Técnico</button>
   </div>
 
   <div id="painelDocs">
@@ -779,6 +823,14 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
       <p class="mini suave">Proposta de revisão apresentada por <strong>José Eduardo Patrocínio</strong>: 29 artigos, Anexo 1 (Declaração de Fé, substituído), Anexo 2 (Requisitos dos Oficiais, alargado) e Anexo 3 (Pacto de Membrasia, novo). Documento de trabalho — não é estatuto em vigor; recomenda-se revisão jurídica antes da submissão. A Nota de leitura e o Anexo Técnico da proposta estão refletidos nos restantes separadores deste painel.</p>
     </div>
     <div id="leituraProposta"></div>
+  </div>
+
+  <div id="docTecnico" class="cartao leitura" hidden>
+    <div class="cab-doc">
+      <h3>Anexo Técnico — Notas à proposta</h3>
+      <p class="mini suave"><strong>Não faz parte do articulado; destina-se ao Presbitério.</strong> É deste documento que provêm as justificações apresentadas ao longo do painel — o campo «porquê» de cada artigo, as três peças do controlo financeiro, a tabela dos ofícios e as questões em aberto. Fica aqui na íntegra para que cada afirmação possa ser conferida na fonte.</p>
+    </div>
+    <div id="leituraTecnico"></div>
   </div>
   </div>
 
@@ -1010,7 +1062,7 @@ prop:`1. Os Ministros de Culto — designação que, para efeitos civis e legais
 2. Os restantes funcionários, designadamente o secretariado, receberão uma remuneração mensal decorrente de contrato de trabalho.
 3. Os Ministros de Culto e outros funcionários serão inscritos nos respetivos regimes de proteção social e tributários conforme as exigências legais, salvo se beneficiarem de outros regimes que os isentem destes.`,
 mudou:'Clarifica que «Ministros de Culto», para efeitos civis e legais, corresponde aos Ministros do Evangelho ou presbíteros docentes definidos no artigo 9.º; o n.º 2 passa a referir expressamente o secretariado.',
-porque:'Com a criação do Capítulo III, era necessário articular a designação civil («Ministro de Culto», da Lei n.º 16/2001) com a terminologia dos ofícios da Igreja.',
+porque:'Com a criação do Capítulo III, era necessário articular a designação civil («Ministro de Culto», da Lei n.º 16/2001) com a terminologia dos ofícios da Igreja. (Os documentos não autonomizam este racional: decorre da articulação do n.º 1 com o artigo 9.º.)',
 ganha:'Deixa de haver dúvida sobre quem pode ser remunerado como ministro e em que qualidade.'},
 
 {id:'a7', num:'7.º', titulo:'Classificação dos oficiais', cap:'III', estado:'novo', anterior:null,
@@ -1037,7 +1089,7 @@ c) Da ordenação e investidura solenes pelo Presbitério, em reunião pública 
 2. Só podem ser propostos para o oficialato os membros que reúnam os requisitos constantes do Anexo 2 e sejam membros da IEL há, pelo menos, um ano, salvo deliberação fundamentada em contrário do Presbitério quanto a oficiais provenientes de outra Igreja de doutrina compatível com a Declaração de Fé.
 3. Em caso de reeleição, ou quando o oficial já houver sido ordenado ao mesmo ofício, é dispensada nova ordenação, procedendo-se apenas à investidura.`,
 mudou:'Artigo novo: o acesso a qualquer ofício passa a exigir, cumulativamente, vocação reconhecida, confirmação da idoneidade pela Assembleia Geral e ordenação e investidura solenes pelo Presbitério em reunião pública; exige-se um ano de membrasia, salvo deliberação fundamentada quanto a oficiais vindos de igreja de doutrina compatível; em caso de reeleição dispensa-se nova ordenação.',
-porque:'Formaliza o percurso de acesso ao oficialato, articulando a confirmação pela Assembleia Geral — já prevista no artigo 4.º, n.º 3 — com a ordenação pelo Presbitério.',
+porque:'Formaliza o percurso de acesso ao oficialato, articulando a confirmação pela Assembleia Geral — já prevista no artigo 4.º, n.º 3 — com a ordenação pelo Presbitério. (Os documentos não autonomizam este racional: decorre da articulação dos artigos 8.º, n.º 1 e 4.º, n.º 3.)',
 ganha:'Um procedimento único e verificável para o acesso a todos os ofícios.'},
 
 {id:'a9', num:'9.º', titulo:'Definição e funções (Ministros do Evangelho)', cap:'III', estado:'novo', anterior:null,
@@ -1053,7 +1105,7 @@ d) Orientar e supervisionar a liturgia na igreja de que é pastor.
 5. É privativa do ministro que pastoreia a Igreja a orientação e supervisão da liturgia, referida na alínea d) do n.º 3.
 6. A Igreja pode ainda convidar, para a pregação ou para a ministração dos sacramentos, ministro de Igreja cuja doutrina seja compatível com a Declaração de Fé, reconhecido para o efeito pelo Presbitério.`,
 mudou:'Artigo novo: define o Ministro do Evangelho e as suas funções; estabelece que a ministração dos sacramentos não é privativa do ministro, podendo ser exercida por presbítero regente; reserva ao ministro que pastoreia a Igreja a orientação e supervisão da liturgia.',
-porque:'Concretiza a paridade de ofício entre presbíteros docentes e regentes, reconhecida no artigo 7.º, n.º 3.',
+porque:'Concretiza a paridade de ofício entre presbíteros docentes e regentes, reconhecida no artigo 7.º, n.º 3, e refletida na tabela dos ofícios do Anexo Técnico, §2, onde ambos surgem como ministrando os sacramentos.',
 ganha:'A Igreja não fica dependente de um único oficial para a ministração dos sacramentos.',
 abertas:['Bênção apostólica: aberta a ministração dos sacramentos ao presbítero regente, importa decidir se a invocação da bênção apostólica (art. 9.º, n.º 3, c) segue o mesmo regime ou permanece função do ministro (Anexo Técnico, §6).']},
 
@@ -1160,7 +1212,7 @@ f) Se extinguir a área de serviço diaconal que lhe estava confiada, sem que ou
 5. Exceciona-se do disposto na alínea e) do número anterior a cessação de funções do Tesoureiro, que se rege pelo artigo 25.º, n.os 9.6 a 9.9, atenta a função de controlo que lhe está cometida.
 6. A cessação de funções não implica a perda do ofício recebido por ordenação, sem prejuízo do disposto na alínea c) do n.º 4.`,
 mudou:'Artigo novo: mandato de três anos renovável para presbíteros e diáconos; enumera as causas de cessação de funções, com exceção expressa do Tesoureiro, cuja cessação se rege pelo artigo 25.º, n.os 9.6 a 9.9; a cessação de funções não implica a perda do ofício recebido por ordenação.',
-porque:'A exceção do Tesoureiro é justificada no próprio texto: «atenta a função de controlo que lhe está cometida» (n.º 5).',
+porque:'Racional expresso no próprio articulado: a exceção do Tesoureiro justifica-se «atenta a função de controlo que lhe está cometida» (art. 14.º, n.º 5).',
 ganha:'O Presbitério não pode exonerar administrativamente quem o controla — a decisão pertence à Assembleia Geral.'},
 
 {id:'a15', num:'15.º', titulo:'Órgãos da associação', cap:'IV', estado:'alterado', anterior:'7.º',
@@ -1250,7 +1302,7 @@ prop:`1. Das reuniões dos órgãos sociais serão sempre lavradas atas, que ser
 2. Das reuniões da Assembleia Geral serão sempre lavradas atas, que serão obrigatoriamente assinadas pelos membros presentes pertencentes a cada um dos órgãos sociais.
 3. Das reuniões diaconais previstas no artigo 13.º, n.º 15 será lavrado registo sumário, arquivado pelo Presbitério.`,
 mudou:'N.º 3 novo: das reuniões diaconais é lavrado registo sumário, arquivado pelo Presbitério.',
-porque:'A reunião diaconal deixa de ser reunião de órgão social (não há ata de órgão), mas fica documentada.',
+porque:'A reunião diaconal deixa de ser reunião de órgão social — logo, não há ata de órgão —, mas fica documentada. (Os documentos não autonomizam este racional: decorre da articulação do n.º 3 com o artigo 13.º, n.os 15 e 16.)',
 ganha:''},
 
 {id:'a24', num:'24.º', titulo:'Assembleia Geral', cap:'IV', estado:'alterado', anterior:'16.º',
@@ -1835,6 +1887,304 @@ Os filhos, desde o momento da conceção, são bênção e herança do Senhor. O
 ['nota','Adaptada da Confissão de Fé da Convenção Batista do Sul. O artigo VI foi alterado para refletir a organização de ofícios adotada no Capítulo III destes Estatutos; os restantes artigos seguem o texto original.']
 ];
 
+/* ===== ANEXO TÉCNICO — texto integral =====
+   Nós: ['sec',t] secção · ['sub',t] subsecção · ['txt',t] parágrafos · ['lista',[…]] · ['tab',[[cab],[linha]…]] */
+const ANEXO_TECNICO = [
+['sec','1. Arquitetura do controlo financeiro'],
+['tab',[['Função','Titular'],
+['Autorizar a despesa','Presbitério (deliberação colegial)'],
+['Validar e ordenar o pagamento','Tesoureiro (diácono)'],
+['Executar materialmente','Secretariado, sob supervisão do Tesoureiro'],
+['Registar e contabilizar','Tesoureiro / secretariado'],
+['Reconciliar','Tesoureiro'],
+['Fiscalizar e auditar','Comissão de Finanças e Património'],
+['Aprovar contas','Assembleia Geral']]],
+['txt','Três peças sustentam o desenho, e cada uma falha sozinha se as outras cederem:'],
+['lista',['Art. 25.º, n.º 9.3, parte final — credenciais bancárias não podem ir para quem executa;',
+'Art. 13.º, n.º 19 — a tesouraria é sempre gratuita, para que o Tesoureiro não fique economicamente dependente do Presbitério;',
+'Art. 25.º, n.º 9.6 — a cessação depende da Assembleia Geral, não do Presbitério.']],
+['txt','Acrescem duas salvaguardas quanto ao Tesoureiro. Como este é diácono e os restantes diáconos coordenam áreas com orçamento próprio, o artigo 25.º, n.º 9.3.1 impede-o de acumular outra área, e o n.º 9.3.2 retira-lhe a validação dos pagamentos em que seja interessado, que passam a exigir dois presbíteros. Note-se que, em qualquer caso, o n.º 9.3 já exige que a segunda autorização bancária seja de um presbítero, pelo que nenhum pagamento é autorizado exclusivamente por diáconos.'],
+
+['sec','2. Arquitetura dos ofícios'],
+['tab',[['','Presbítero docente','Presbítero regente','Diácono'],
+['Designação','Eleito pela AG','Eleito pela AG','Confirmado pela AG (art. 13.º)'],
+['Ordenação','Presbitério','Presbitério','Presbitério'],
+['Titular de órgão social','Sim','Sim','Não'],
+['Sacramentos','Ministra','Ministra','Não'],
+['Supervisão da liturgia','Privativa (se pastor)','Não','Não'],
+['Sexo','Masculino','Masculino','Ambos'],
+['Mandato','3 anos','3 anos','3 anos'],
+['Número','Plural','Plural','Variável, conforme as áreas']]],
+
+['sec','3. O que muda na prática'],
+['txt','Para os atuais responsáveis de ministério. Não perdem a liderança do seu ministério. O que muda é que passam a poder ser confirmados pela congregação e ordenados diáconos para essa área — ganham reconhecimento, não perdem lugar. O que desaparece é o Conselho Diaconal como órgão deliberativo: passa a haver reunião diaconal convocada e presidida pelo Presbitério.'],
+['txt','Para o atual Representante dos Diáconos. O cargo é extinto. Mantém a tesouraria, mantém uma das duas autorizações bancárias, e passa a exercê-la por confirmação da congregação em vez de por consequência de um cargo. O que perde é o título. Vale a pena apresentar-lho por esta ordem, e antes da assembleia.'],
+['txt','Para a congregação. Passa a confirmar os diáconos, o que hoje não acontece — a inerência dispensava qualquer pronúncia da Assembleia.'],
+
+['sec','4. Nota sobre a origem da prática atual'],
+['txt','A tesouraria não estava atribuída a ninguém nos Estatutos vigentes: a palavra «tesoureiro» não consta do texto. A função migrou para o Representante dos Diáconos por via do artigo 17.º, n.º 5, que lhe dava a segunda assinatura nos atos e contratos — quem assina acaba, na prática, por gerir.'],
+['txt','Convém apresentar isto ao Presbitério nestes termos: não houve irregularidade de ninguém, houve uma prática que cresceu num vazio normativo. É diferente, e é muito comum.'],
+
+['sec','5. Matérias a regular no Regulamento Interno'],
+['lista',['Descrições de funções de cada área de serviço diaconal (art. 13.º, n.º 7);',
+'Limite de valor para despesas correntes do Tesoureiro (art. 25.º, n.º 9.4);',
+'Limiar de obrigações pecuniárias que exige deliberação da Assembleia Geral (art. 24.º, n.º 10, d);',
+'Regulamento próprio da CFP (art. 26.º, n.º 10);',
+'Processo de preparação e avaliação do Assistente Pastoral (art. 10.º, n.º 4);',
+'Periodicidade da leitura pública do Pacto de Membrasia (anexo 3);',
+'Política de proteção de dados e prazos de conservação (ver ponto 9).']],
+
+['sec','6. Questões ainda em aberto'],
+['lista',['Admissão de membros. O artigo 25.º, n.º 6, i) atribui ao Presbitério a admissão, enquanto o n.º 6, f) manda propô-la à Assembleia Geral. A duplicação subsiste e merece decisão autónoma.',
+'Competência regulamentar. Os artigos 2.º, n.os 4 e 5 e 3.º, n.º 15 atribuem ao Presbitério a aprovação de regulamentos, ao passo que o artigo 24.º, n.º 10, e) reserva o Regulamento Interno à Assembleia Geral.',
+'Bênção apostólica. Aberta a ministração dos sacramentos ao presbítero regente, importa decidir se a invocação da bênção apostólica (art. 9.º, n.º 3, c) segue o mesmo regime ou permanece função do ministro.',
+'Lista fechada. O artigo 19.º, n.º 1 mantém a eleição em lista proposta pelo Presbitério, o que está em alguma tensão com a definição do presbítero regente como «representante imediato dos membros».',
+'Fronteira da administração corrente. Retirada a cláusula residual do artigo 24.º, n.º 10, d), a residualidade passa a estar apenas na alínea k), que cede perante a competência de outros órgãos. Ao Presbitério cabe a administração corrente e ordinária (art. 25.º, n.º 6, d). A fronteira entre uma e outra não está definida em valor nem em natureza; se se revelar litigiosa na prática, o Regulamento Interno é o lugar para a concretizar.',
+'Quórum da Assembleia. O regime do artigo 25.º, n.º 9.6, c) exige a presença da maioria dos membros. Convém verificar, em face da participação habitual nas assembleias ordinárias, se o mecanismo do n.º 9.6.1 é suficiente para evitar bloqueios.']],
+
+['sec','7. Sobre a substituição da Declaração de Fé (Anexo 1)'],
+['txt','A nova Declaração adapta a confissão de fé da Convenção Batista do Sul (Baptist Faith and Message, 2000), na sua versão portuguesa. A substituição não é uma operação de forma: altera compromissos doutrinários e amplia significativamente o que a membrasia implica. Os pontos abaixo devem ser lidos antes da submissão à Assembleia.'],
+['sub','7.1. Adaptação do artigo VI — resolvido'],
+['txt','O texto original do artigo VI afirmava que os oficiais da igreja são pastores e diáconos, o que contradizia os três ofícios do artigo 7.º destes Estatutos. Optou-se por adaptar a Declaração, e não o Capítulo III.'],
+['txt','O artigo VI passa a reconhecer presbíteros e diáconos, distinguindo entre os presbíteros os docentes — pastores ou ministros do Evangelho — e os regentes, iguais em ofício e dignidade, reunidos em Presbitério. A alteração está identificada na nota final do Anexo 1.'],
+['txt','Deve notar-se, para registo, que a Declaração deixa assim de corresponder ao texto confessional de origem no ponto mais característico da eclesiologia batista. É uma escolha legítima e coerente com a estrutura adotada, mas convém que a Assembleia saiba que aprova uma confissão adaptada e não a confissão tal como publicada.'],
+['sub','7.2. Sexo dos oficiais — resolvido'],
+['txt','O texto original limitava a homens apenas o ofício de pastor. A redação adaptada limita a homens o ofício de presbítero, docente e regente, e declara o diaconato aberto a homens e mulheres — ficando alinhada com o artigo 7.º, n.º 6.'],
+['sub','7.3. Alterações doutrinárias substantivas face à Declaração anterior'],
+['tab',[['Matéria','Declaração anterior','Nova Declaração'],
+['Escatologia','Explicitamente pré-milenista e dispensacionalista: arrebatamento, reino milenar, Trono Branco','Deliberadamente não específica: regresso, ressurreição, juízo, Céu e Inferno'],
+['Eleição e perseverança','Não abordadas','Afirmadas expressamente (art. V)'],
+['Anjos e demónios','Secção própria','Sem secção correspondente'],
+['Inerrância','Afirmada quanto aos autógrafos','Formulada como verdade sem mistura de erro']]],
+['txt','A alteração escatológica é a mais significativa: a Igreja deixaria de estar confessionalmente comprometida com o pré-milenismo dispensacionalista. Pode ser intencional — muitas igrejas preferem não vincular a congregação nesta matéria — mas não deve passar despercebida.'],
+['sub','7.4. Alargamento do âmbito confessional'],
+['txt','A nova Declaração acrescenta dez artigos sem equivalente na anterior, incluindo posições sobre o Dia do Senhor, mordomia, educação, ordem social, paz e guerra, liberdade religiosa e família.'],
+['txt','Isto tem uma consequência prática que importa ponderar: nos termos do artigo 4.º, n.º 2, só podem ser admitidos como membros os que aceitem as doutrinas da Igreja, e o artigo 4.º, n.º 6, a) faz do testemunho conforme à Declaração de Fé um dever de todos os membros. Passariam assim a integrar as condições de membrasia posições sobre aborto, homossexualidade, pornografia, papéis conjugais e relação entre igreja e estado.'],
+['txt','Não se trata de dizer que essas posições estejam certas ou erradas — é decisão da Igreja. Trata-se de notar que passam a ser vinculativas para a membrasia, o que hoje não sucede, e que isso deve ser explicado à congregação antes da votação, e não descoberto depois.'],
+['sub','7.5. Nota sobre o artigo XVII e o enquadramento português'],
+['txt','O artigo XVII afirma que o estado não tem o direito de lançar impostos para apoio de qualquer religião. Em Portugal, as pessoas coletivas religiosas podem beneficiar da consignação de IRS prevista na Lei da Liberdade Religiosa. Não há incompatibilidade jurídica, mas há uma tensão de princípio que convém que o Presbitério tenha presente, sobretudo se a IEL beneficiar ou vier a beneficiar desse regime.'],
+['sub','7.6. Direitos de autor — a confirmar'],
+['txt','O texto de origem está protegido por direitos de autor, com reserva a favor da Comissão Executiva da Convenção Batista do Sul. A nota final foi substituída por uma menção de adaptação e atribuição.'],
+['txt','Importa ser claro quanto a isto: a substituição da nota não resolve a questão de direitos, e a adaptação torna-a mais exigente, não menos. Alterar um texto protegido cria uma obra derivada, o que em regra depende de autorização do titular; e a supressão da menção de reserva de direitos é, por si, desaconselhável.'],
+['txt','Isto não significa que a adaptação não possa ser feita — confissões de fé são publicadas precisamente para serem adotadas por igrejas, e é frequente que os titulares autorizem adaptações. Significa que convém obter essa autorização por escrito, ou pelo menos colocar a questão ao advogado que fizer a revisão jurídica, antes de o documento ser submetido a registo público.'],
+['sub','7.7. Ponto que se mantém coerente'],
+['txt','O artigo VII (batismo por imersão do crente, Ceia como ato simbólico) mantém a posição da Declaração anterior e é compatível com o artigo 4.º, n.º 2. O artigo VI, ao descrever a congregação local como autónoma e governada por processos democráticos, é coerente com o artigo 24.º, n.º 1. O artigo XIV, sobre cooperação sem autoridade de umas organizações sobre as outras, é coerente com o artigo 3.º, n.º 7.'],
+
+['sec','8. Sobre o Pacto de Membrasia (Anexo 3)'],
+['txt','O Pacto foi adaptado ao português europeu. As alterações são de forma — colocação de clíticos, uso do artigo com o possessivo, contrações, e a substituição de «sobre a nossa profissão de fé» por «mediante», que no original decalcava o inglês upon. Nenhuma altera o sentido.'],
+['txt','Usou-se «Membrasia», e não «Membresia», por ser o termo empregue no Capítulo II destes Estatutos.'],
+['sub','8.1. Efeito jurídico'],
+['txt','Sendo parte integrante dos Estatutos (art. 1.º, n.º 3), o Pacto deixa de ser uma declaração devocional e passa a ter valor normativo. Três consequências:'],
+['lista',['A subscrição torna-se condição de admissão (art. 4.º, n.º 2);',
+'O seu cumprimento passa a ser dever dos membros (art. 4.º, n.º 6, a), e é, nessa medida, sindicável em sede disciplinar;',
+'A sua alteração exige maioria de três quartos, como qualquer alteração estatutária (art. 24.º, n.º 10, h).']],
+['txt','Convém que o Presbitério pondere se é isso que pretende. A alternativa é aprovar o Pacto por deliberação da Assembleia Geral sem o integrar nos Estatutos, mantendo-lhe o valor de compromisso assumido publicamente, mas sem consequência disciplinar direta nem rigidez de alteração.'],
+['sub','8.2. Membros que não subscrevam — decisão a tomar'],
+['txt','O artigo 29.º, n.º 7 propõe que a não subscrição, por parte de membros já admitidos, não determine por si só a perda da qualidade de membro. É a solução prudente: excluir alguém por não assinar um documento novo, sem que tenha havido qualquer falta, seria desproporcionado e provavelmente contestável.'],
+['txt','Mas cria uma assimetria duradoura — dois regimes de membrasia dentro da mesma congregação. Se a Igreja preferir uniformidade, a alternativa é fixar um prazo findo o qual a não subscrição seja tratada nos termos do artigo 4.º, n.º 7, a). Recomenda-se a primeira via, mas a decisão é da Igreja.'],
+['sub','8.3. Compromissos com conteúdo material'],
+['txt','Dois pontos do Pacto passam a ser deveres exigíveis e merecem atenção:'],
+['lista',['A contribuição financeira. O Pacto obriga a contribuir «regular e alegremente». Note-se que o artigo 4.º, n.º 7, c) exclui expressamente as contribuições financeiras dos fundamentos de exclusão disciplinar. As duas normas devem ser lidas em conjunto: a contribuição é dever, mas o seu incumprimento não é fundamento de exclusão. Convém que isto fique claro na apresentação à congregação.',
+'A transferência ao mudar de localidade. O compromisso de se unir a outra igreja articula-se com o direito de transferência do artigo 4.º, n.º 5, i) e com a causa de perda de qualidade de membro do artigo 4.º, n.º 7, b).']],
+['sub','8.4. Uso litúrgico'],
+['txt','A nota introdutória prevê leitura pública periódica, à semelhança da prática das congregações que adotam pactos. Convém que o Regulamento Interno fixe a periodicidade — trimestral, na Ceia, ou anual — em vez de a deixar em aberto.'],
+
+['sec','9. Proteção de dados — matéria a tratar com apoio jurídico'],
+['txt','Os Estatutos não contêm qualquer disposição sobre tratamento de dados pessoais, e a proposta agrava a exposição em vez de a reduzir. Não se redigiu articulado por ser matéria que exige apoio jurídico especializado, mas fica o levantamento.'],
+['sub','9.1. Dados tratados pela Igreja'],
+['lista',['Registo de membros (art. 4.º, n.º 4), que ganha peso normativo com o Pacto de Membrasia e com as causas de perda da qualidade de membro;',
+'Registos de auxílios prestados (art. 13.º, n.º 9) — no cuidado de doentes, idosos e necessitados, incluem em regra dados de saúde e de situação socioeconómica, que o RGPD trata como categorias especiais;',
+'Dados de menores, nos ministérios de infância e juventude;',
+'Dados financeiros de membros, associados a contribuições e ofertas;',
+'Processos disciplinares (art. 25.º, n.º 6, g e n.º 12), com registo em ata de factos relativos a pessoas identificadas.']],
+['sub','9.2. O que falta'],
+['lista',['Identificação do responsável pelo tratamento — em regra a própria associação, representada pelo Presbitério — e de quem responde operacionalmente;',
+'Base legal para cada finalidade, atendendo ao regime das categorias especiais;',
+'Prazos de conservação, designadamente quanto a registos de auxílios e a membros que tenham cessado a qualidade de membro;',
+'Regras de acesso, sobretudo por parte do secretariado e da Comissão de Finanças e Património, que dispõe de acesso irrestrito à documentação financeira (art. 26.º, n.º 4, b);',
+'Consentimento parental e regras próprias para o tratamento de dados de menores.']],
+['sub','9.3. Onde regular'],
+['txt','A designação do responsável pelo tratamento é matéria estatutária; o restante pertence ao Regulamento Interno e a uma política de proteção de dados autónoma. Recomenda-se que seja tratado em conjunto com a revisão jurídica prevista no ponto 10, e com a mesma prioridade.'],
+
+['sec','10. Procedimento de aprovação'],
+['lista',['Proposta elaborada e aprovada pelo Presbitério (art. 25.º, n.º 6, f).',
+'Conversas prévias com os atuais responsáveis de ministério e com o Representante dos Diáconos.',
+'Revisão jurídica, atenta a sujeição a registo e ao regime da Lei n.º 16/2001, de 22 de junho, incluindo as condições de utilização da confissão de fé adaptada (ponto 7.6) e o regime de proteção de dados (ponto 9).',
+'Convocatória com 30 dias de antecedência, entregue pessoalmente ou enviada por correio eletrónico ou registado (art. 24.º, n.º 8).',
+'Aprovação por maioria de três quartos dos membros (art. 24.º, n.º 10, h).',
+'Registo da alteração e comunicação às entidades competentes.',
+'Identificação das áreas de serviço diaconal e primeira confirmação de diáconos (art. 29.º, n.os 2 e 4).',
+'Revisão do Regulamento Interno (art. 29.º, n.º 5).']]
+];
+
+/* ===== Glossário ===== */
+const GLOSSARIO = [
+{g:'Órgãos e ofícios', termos:[
+['Assembleia Geral','O órgão soberano da Igreja: reúne todos os membros que estatutariamente não estejam impedidos de participar. Elege os órgãos, aprova contas e orçamento, e altera os Estatutos.','art. 24.º'],
+['Mesa da Assembleia Geral','O grupo que dirige os trabalhos da Assembleia: presidente, vice-presidente e secretário. Confere posse aos eleitos e, na proposta, também aos oficiais.','art. 24.º, n.os 2 e 4'],
+['Presbitério','A Direção da Igreja, composta por uma pluralidade de presbíteros. Governa, representa e — na proposta — assume expressamente a gestão financeira e patrimonial.','art. 25.º'],
+['Presbítero','Oficial ordenado que participa no governo colegial da Igreja. A proposta distingue duas espécies: docente e regente, iguais em ofício e dignidade.','arts. 7.º e 12.º'],
+['Presbítero docente','O presbítero que se dedica especialmente ao ensino e à pregação — é o pastor da Igreja. Corresponde ao Ministro do Evangelho e, para efeitos civis, ao Ministro de Culto.','arts. 7.º, n.º 2 e 9.º'],
+['Presbítero regente','O presbítero que, sem a dedicação especial ao ensino, exerce com o pastor o governo e a disciplina. É descrito como «representante imediato dos membros».','art. 12.º'],
+['Pastor Efetivo','O ministro eleito pela Assembleia Geral e instalado na Igreja, a quem cabe presidir ao Presbitério. Mandato de três anos, renovável.','art. 10.º, n.º 2'],
+['Pastor Auxiliar','Ministro que coadjuva o Pastor Efetivo, sob a sua direção e sem jurisdição própria sobre a Igreja. Proposto pelo Presbitério e eleito pela Assembleia Geral.','art. 10.º, n.º 3'],
+['Assistente Pastoral','Membro que, aspirando ao presbiterato, apoia o ministério pastoral em preparação para o ofício. Não é oficial ordenado e não integra o Presbitério.','art. 10.º, n.º 4'],
+['Diácono','Oficial ordenado para o serviço: atende às necessidades materiais e práticas da congregação e liberta os presbíteros para a oração e o ministério da Palavra. Na proposta é confirmado pela Assembleia Geral e aberto a ambos os sexos.','art. 13.º'],
+['Área de serviço diaconal','A esfera concreta confiada a cada diácono — cuidado dos necessitados, hospitalidade, tesouraria, recursos materiais, apoio ao culto, coordenação de ministérios. Determina o número de diáconos.','art. 13.º, n.os 4 a 6'],
+['Tesoureiro','Figura criada pela proposta: o diácono da área da tesouraria, que valida os pagamentos autorizados pelo Presbitério e reconcilia as contas. Não integra o Presbitério nem a CFP, e a função é sempre gratuita.','art. 25.º, n.º 9'],
+['Comissão de Finanças e Património (CFP)','Órgão que, nos Estatutos vigentes, gere as finanças e o património. Na proposta passa a órgão consultivo e de fiscalização, sem poderes de gestão.','art. 26.º'],
+['Conselho Consultivo','Órgão não diretivo que vela pelo património moral e espiritual da Igreja e aconselha quando solicitado. Pode integrar pessoas que não sejam membros da IEL.','art. 27.º'],
+['Conselho Diaconal','Órgão social dos Estatutos vigentes que reunia os diáconos por inerência de liderança de departamento. A proposta extingue-o como órgão: passa a haver reunião diaconal, sem poder deliberativo.','art. 18.º vigente; art. 13.º, n.os 15 e 16'],
+['Oficial / oficialato','Quem exerce um dos ofícios da Igreja — presbítero docente, presbítero regente ou diácono. O acesso exige vocação reconhecida, confirmação pela Assembleia Geral e ordenação pelo Presbitério.','arts. 7.º e 8.º'],
+['Ministro de Culto','Designação civil e legal, decorrente da Lei da Liberdade Religiosa, que corresponde ao Ministro do Evangelho ou presbítero docente. É a figura que pode ser remunerada mediante contrato.','art. 6.º, n.º 1'],
+['Secretariado','Os funcionários da Igreja que executam materialmente os pagamentos e organizam a documentação, sob supervisão funcional do Tesoureiro e supervisão laboral do Pastor Efetivo.','arts. 25.º, n.º 9.2 e 10.º, n.º 8']]},
+
+{g:'Aceder e cessar o ofício', termos:[
+['Ordenação','O ato solene pelo qual o Presbitério confere o ofício, em reunião pública da congregação. É perpétua: não se repete quando a pessoa é reeleita para o mesmo ofício.','arts. 7.º, n.º 4 e 8.º'],
+['Investidura','A entrada em exercício no ofício já recebido. Um diácono que passe a outra área de serviço é apenas investido, sem nova ordenação.','arts. 8.º, n.º 3 e 13.º, n.º 13'],
+['Confirmação','A deliberação pela qual a Assembleia Geral atesta a idoneidade moral, espiritual e doutrinária e a vocação de um candidato ao ofício. É condição de acesso.','arts. 4.º, n.º 3 e 8.º, n.º 1, b)'],
+['Mandato','O período de exercício do cargo ou ofício: três anos, renovável, tanto para os órgãos sociais como para o presbiterato e o diaconato.','arts. 14.º, n.º 1 e 17.º, n.º 1'],
+['Vacatura','A situação de lugar vago num órgão. Vagando a maioria dos membros, realizam-se eleições parciais no prazo máximo de um mês.','art. 18.º'],
+['Exoneração','A cessação de funções a pedido do interessado ou por deliberação fundamentada do Presbitério, com audição prévia e ratificação pela Assembleia Geral. O Tesoureiro está excecionado deste regime.','art. 14.º, n.º 4, e) e n.º 5'],
+['Deposição','A perda do ofício na sequência de procedimento disciplinar. É o único caso em que a cessação de funções implica perder o ofício recebido por ordenação.','art. 14.º, n.os 4, c) e 6'],
+['Suspensão preventiva','Medida imediata que o Presbitério pode aplicar ao Tesoureiro havendo indício sério de irregularidade. Obriga a convocar a Assembleia em 30 dias e caduca aos 60 sem deliberação.','art. 25.º, n.os 9.7 e 9.8']]},
+
+{g:'Decidir e deliberar', termos:[
+['Quórum','O número mínimo de presenças exigido para que um órgão possa deliberar validamente. A Assembleia funciona em primeira convocatória com a maioria dos membros.','arts. 20.º, n.º 1 e 24.º, n.º 7'],
+['Primeira e segunda convocatória','Se não houver quórum à hora marcada (primeira convocatória), a Assembleia reúne quinze minutos depois com qualquer número de membros (segunda convocatória).','art. 24.º, n.º 7'],
+['Maioria simples','Mais votos a favor do que contra, não contando as abstenções. É o critério geral, salvo quando os Estatutos ou a lei exigirem outro.','art. 24.º, n.º 9'],
+['Maioria qualificada','Uma exigência reforçada para matérias graves: três quartos dos membros para alterar os Estatutos, quatro quintos para a extinção, dois terços em segunda convocatória para cessar o Tesoureiro.','arts. 24.º, n.º 10, h) e i); 25.º, n.º 9.6.1'],
+['Escrutínio secreto','Votação em que o sentido de voto de cada um não é conhecido. É obrigatória nas eleições dos órgãos e em assuntos de incidência pessoal dos seus membros.','art. 19.º, n.º 3'],
+['Voto de qualidade','O voto adicional que o presidente ou responsável de um órgão usa para desempatar uma deliberação.','art. 20.º, n.º 2'],
+['Inibição de voto','A proibição de votar em assuntos que digam diretamente respeito à própria pessoa, ao cônjuge, a ascendentes ou descendentes. Na proposta estende-se aos diáconos.','art. 21.º'],
+['Ratificação','A confirmação posterior, pela Assembleia Geral, de um ato já praticado por outro órgão — por exemplo, a exoneração de um oficial pelo Presbitério.','art. 14.º, n.º 4, e)'],
+['Parecer prévio obrigatório','Uma opinião escrita que tem de ser pedida e emitida antes da decisão. Na proposta, os pareceres da CFP são obrigatórios quanto à emissão.','art. 26.º, n.º 2'],
+['Parecer não vinculativo','Um parecer que não obriga quem decide. A deliberação que dele divirja tem de ser fundamentada, ficando parecer e fundamentação registados em ata.','art. 26.º, n.º 3.1'],
+['Ata','O registo escrito e assinado das deliberações de um órgão. Das reuniões diaconais, que não são de órgão social, lavra-se apenas registo sumário.','art. 23.º']]},
+
+{g:'Dinheiro e património', termos:[
+['Segregação de funções','O princípio de separar quem autoriza, quem valida, quem executa e quem fiscaliza uma despesa, para que nenhuma pessoa controle sozinha todo o circuito.','Anexo Técnico, §1'],
+['Cabimento orçamental','A verificação de que existe verba prevista no orçamento para suportar uma despesa. É uma das três coisas que o Tesoureiro confere antes de validar um pagamento.','art. 25.º, n.º 9.1'],
+['Execução orçamental','A concretização do orçamento aprovado ao longo do ano. Sem orçamento aprovado, prossegue ao nível do exercício anterior.','art. 25.º, n.º 10'],
+['Fundo de Reserva','A poupança acumulada da Igreja. Na proposta, qualquer recurso a este fundo exige parecer prévio da CFP.','art. 26.º, n.º 2, d)'],
+['Reconciliação bancária','A conferência periódica entre os registos internos e os extratos do banco, para confirmar que batem certo. Compete ao Tesoureiro.','art. 25.º, n.º 9.1'],
+['Balancete','O resumo periódico dos movimentos e saldos. O Tesoureiro apresenta-o à CFP pelo menos de três em três meses.','art. 25.º, n.º 9.5'],
+['Mapa Anual de Tesouraria','O documento anual de prestação de contas de tesouraria, sobre o qual a CFP dá parecer.','art. 26.º, n.º 2, b)'],
+['Vincular a Igreja','Assumir obrigações em nome da Igreja — assinar um contrato, um arrendamento. Exige duas assinaturas, sendo uma sempre a do Responsável do Presbitério.','art. 25.º, n.º 5'],
+['Onerar','Constituir um encargo sobre um bem, como uma hipoteca ou um usufruto. Quanto a imóveis, exige maioria de três quartos de todos os associados.','art. 5.º, n.º 4']]},
+
+{g:'Membrasia e vida da Igreja', termos:[
+['Membrasia','A qualidade de membro da Igreja e o conjunto de direitos e deveres que dela decorrem. O termo é o usado no Capítulo II dos Estatutos.','Capítulo II'],
+['Pacto de Membrasia','Compromisso mútuo, novo na proposta (Anexo 3), subscrito por quem é admitido como membro. Sendo parte integrante dos Estatutos, passa a ter valor normativo.','art. 4.º, n.º 2; Anexo 3'],
+['Declaração de Fé','O documento doutrinário que é parte integrante dos Estatutos (Anexo 1). A proposta substitui-o integralmente.','art. 1.º, n.º 3; Anexo 1'],
+['Ordenança','Ato instituído por Cristo e praticado pela Igreja: o batismo do crente por imersão e a Ceia do Senhor. A Declaração de Fé usa este termo em vez de «sacramento».','Anexo 1, art. VII'],
+['Sacramentos','No articulado, a ministração do batismo e da Ceia. Na proposta não é privativa do ministro: também o presbítero regente os pode ministrar.','arts. 9.º, n.º 4 e 12.º, n.º 2, f)'],
+['Liturgia','A ordem e a condução do culto. A sua orientação e supervisão é privativa do ministro que pastoreia a Igreja.','art. 9.º, n.os 3, d) e 5'],
+['Munus espiritual','A função ou encargo espiritual do ministro — a expressão usada nos Estatutos a propósito da sua remuneração.','art. 6.º, n.º 1'],
+['Neófito','Quem é recém-convertido ou recém-chegado à fé. Instruí-los compete ao ministro e ao presbítero regente.','arts. 11.º, f) e 12.º, n.º 2, c)'],
+['Admoestação','Repreensão. É a sanção mais leve e, na proposta, a admoestação particular precede o procedimento disciplinar, salvo se a gravidade ou notoriedade dos factos o não permitirem.','arts. 4.º, n.º 10 e 25.º, n.º 12'],
+['Exclusão','A sanção disciplinar mais grave, que faz perder a qualidade de membro. Compete à Assembleia Geral, e não ao Presbitério.','arts. 24.º, n.º 10, a) e 25.º, n.º 6, g)'],
+['Resignação e transferência','As saídas voluntárias: a renúncia à qualidade de membro e a passagem para outra Igreja mediante carta. Nenhuma é concedida na pendência de procedimento disciplinar.','art. 4.º, n.os 7, a) e b), e 9'],
+['Ausência','A falta de participação na vida da congregação por mais de 3 meses sem contacto ou justificação. Verificada, o Presbitério diligencia o contacto e só depois propõe a exclusão à Assembleia.','art. 4.º, n.º 8']]},
+
+{g:'Termos jurídicos e documentais', termos:[
+['Estatutos','O documento que rege a Igreja enquanto pessoa coletiva religiosa. A sua alteração está sujeita a registo e a maioria de três quartos.','art. 24.º, n.º 10, h)'],
+['Regulamento Interno','O documento de segundo nível que concretiza os Estatutos. Aprovado pela Assembleia Geral, é onde a proposta remete várias matérias de detalhe.','art. 24.º, n.º 10, e); Anexo Técnico, §5'],
+['Parte integrante','Diz-se do anexo que tem o mesmo valor do corpo dos Estatutos — pelo que só se altera com a mesma maioria qualificada.','art. 1.º, n.º 3'],
+['Disposições transitórias','As regras que gerem a passagem do regime antigo para o novo, evitando vazios: quem se mantém em funções, em que prazos, e até quando.','art. 29.º'],
+['Obra derivada','Em direito de autor, a obra criada a partir da alteração de outra protegida. Criar uma depende, em regra, de autorização do titular — questão que o Anexo Técnico assinala quanto à Declaração de Fé.','Anexo Técnico, §7.6'],
+['Categorias especiais de dados','No RGPD, os dados mais sensíveis — como os de saúde —, sujeitos a proteção reforçada. Os registos de auxílios prestados pelos diáconos incluem-nos em regra.','Anexo Técnico, §9.1'],
+['Responsável pelo tratamento','Quem determina as finalidades e os meios do tratamento de dados pessoais e responde por ele. O Anexo Técnico nota que os Estatutos não o designam.','Anexo Técnico, §9.2']]}
+];
+
+/* ===== O que muda para mim — por perfil =====
+   fonte: 'AT§3' quando o perfil consta do Anexo Técnico, §3; 'articulado' quando resume o que os artigos determinam. */
+const PERFIS = [
+{id:'membro', nome:'Sou membro da congregação', fonte:'AT§3',
+resumo:'Ganha uma pronúncia que hoje não tem, e um dever novo de subscrição.',
+pontos:[
+['Passa a confirmar os diáconos','Hoje não acontece: a inerência — ser responsável de um departamento — dispensava qualquer pronúncia da Assembleia. Na proposta, os candidatos são divulgados com 15 dias de antecedência e confirmados por votação secreta, podendo qualquer membro pedir que um nome seja votado em separado.','art. 13.º, n.os 11 e 12; Anexo Técnico, §3'],
+['Passa a eleger os presbíteros regentes e os pastores','A Assembleia elege o Pastor Efetivo, o Pastor Auxiliar e os presbíteros regentes, e confirma a idoneidade e vocação de todos os candidatos ao oficialato.','art. 24.º, n.º 10, c)'],
+['Passa a decidir sobre a cessação do Tesoureiro','O Presbitério não pode destituí-lo: só a Assembleia, expressamente convocada, com audição prévia e escrutínio secreto.','art. 25.º, n.º 9.6, c)'],
+['Subscreve o Pacto de Membrasia','Os novos membros passam a subscrevê-lo como condição de admissão. Quem já é membro é convidado a subscrevê-lo no prazo de doze meses, mas a não subscrição não faz, por si só, perder a qualidade de membro.','arts. 4.º, n.º 2 e 29.º, n.º 7'],
+['A Declaração de Fé que aceita passa a ser outra','O Anexo 1 é substituído: passa de 9 secções a 18 artigos, com dez temas novos. Como aceitar as doutrinas é condição de admissão e o testemunho conforme à Declaração é dever dos membros, esse alargamento é vinculativo — e o Anexo Técnico recomenda que seja explicado antes da votação.','Anexo 1; Anexo Técnico, §7.4'],
+['Se se ausentar, há um procedimento','A exclusão por ausência deixa de ser automática: o Presbitério diligencia o contacto e só depois propõe a exclusão à Assembleia, que delibera.','art. 4.º, n.º 8'],
+['Pode reportar desconformidades','Qualquer membro que verifique que a Igreja funciona em desconformidade com os Estatutos comunica-o ao Presbitério, que informa a Assembleia em cada reunião até à situação estar sanada.','art. 24.º, n.º 11'],
+['Servir nos ministérios passa a ser dos membros','O serviço nos ministérios e departamentos cabe aos membros; quem não é membro pode servir pontualmente com autorização do Presbitério, ou em funções administrativas.','art. 4.º, n.º 14']]},
+
+{id:'ministerio', nome:'Sou responsável de um ministério ou departamento', fonte:'AT§3',
+resumo:'Não perde a liderança: ganha reconhecimento. O que desaparece é o órgão, não o lugar.',
+pontos:[
+['Não perde a liderança do seu ministério','O Anexo Técnico é expresso: «Não perdem a liderança do seu ministério.» O que muda é o título e a via de designação.','Anexo Técnico, §3'],
+['Passa a poder ser ordenado diácono para essa área','A coordenação de ministérios passa a ser um modo típico de exercício do diaconato, e não algo que o diaconato não confere. Ganha reconhecimento formal pela congregação.','art. 13.º, n.º 5; tabela de decisões'],
+['Deixa de haver Conselho Diaconal','O órgão deliberativo desaparece. Passa a haver reunião diaconal, convocada e presidida pelo Presbitério, para coordenação e apoio mútuo — sem poder deliberativo próprio.','art. 13.º, n.os 15 e 16'],
+['Responde diretamente perante o Presbitério','Cada diácono responde perante o Presbitério pela área que lhe está confiada. A orientação estratégica é do Presbitério; a coordenação da execução é sua.','art. 13.º, n.os 10 e 16'],
+['O regulamento do seu departamento passa a ser ouvido consigo','Os regulamentos dos departamentos passam a ser aprovados pelo Presbitério ouvidos os diáconos das áreas respetivas, em vez de com parecer do Conselho de Diáconos.','art. 3.º, n.º 15'],
+['Angariar fundos exige autorização prévia','Nenhuma angariação pode ser promovida em nome da Igreja ou de um ministério sem autorização prévia do Presbitério.','art. 25.º, n.º 11']]},
+
+{id:'repdiac', nome:'Sou o atual Representante dos Diáconos', fonte:'AT§3',
+resumo:'Mantém a tesouraria e a autorização bancária. O que perde é o título.',
+pontos:[
+['O cargo é extinto','O Representante do Conselho Diaconal cessa funções com a entrada em vigor dos Estatutos. É uma das decisões expressas da proposta.','art. 29.º, n.º 3; tabela de decisões'],
+['Mantém a tesouraria','Quem exerce a tesouraria mantém-se no seu desempenho até à confirmação do Tesoureiro pela Assembleia Geral, sem interrupção.','art. 29.º, n.º 3'],
+['Mantém uma das duas autorizações bancárias','Durante todo o período transitório continua a aplicar-se a dupla autorização, sendo uma delas a sua.','arts. 29.º, n.º 3 e 25.º, n.º 9.3'],
+['Passa a exercê-la por confirmação da congregação','Deixa de exercer a tesouraria por consequência de um cargo e passa a exercê-la por confirmação da Assembleia Geral, como diácono da área da tesouraria.','art. 13.º; Anexo Técnico, §3'],
+['Deixa de assinar os contratos','A segunda assinatura nos atos e contratos passa a ser de outro membro do Presbitério. É a correção direta da via pela qual a tesouraria migrou para este cargo — sem que tenha havido irregularidade de ninguém.','arts. 25.º, n.º 5 e 17.º, n.º 5 vigente; Anexo Técnico, §4']]},
+
+{id:'tesoureiro', nome:'Sou (ou serei) Tesoureiro', fonte:'articulado',
+resumo:'Ganha um mandato escrito e proteção contra destituição — e limites claros ao que pode fazer.',
+pontos:[
+['A função passa a existir nos Estatutos','A palavra «tesoureiro» não consta do texto vigente. A proposta cria a figura, com competências, limites e regime de cessação próprios.','art. 25.º, n.º 9; Anexo Técnico, §4'],
+['Valida, não autoriza','Valida os pagamentos previamente autorizados pelo Presbitério, verificando autorização, documento de despesa e cabimento orçamental. Não pode autorizar despesa nem contrair obrigações, salvo despesas correntes até ao limite do Regulamento Interno.','art. 25.º, n.os 9.1 e 9.4'],
+['Só a Assembleia o pode destituir','O Presbitério não o pode exonerar administrativamente. A cessação exige deliberação da Assembleia Geral, expressamente convocada, com audição prévia e escrutínio secreto.','arts. 25.º, n.º 9.6 e 14.º, n.º 5'],
+['A função é sempre gratuita','Não pode ser remunerado a qualquer título pela Igreja, nem acumular a tesouraria com funções remuneradas de secretariado ou de execução financeira. É uma salvaguarda da sua independência, não uma desvalorização.','art. 13.º, n.º 19'],
+['Não acumula outra área nem integra órgãos','Não pode ser membro do Presbitério nem da CFP, nem coordenar outra área de serviço diaconal. Os pagamentos em que seja interessado são autorizados por dois presbíteros.','art. 25.º, n.os 9, 9.3.1 e 9.3.2'],
+['Presta contas à CFP de três em três meses','Apresenta balancete com livros, comprovativos e extratos, e presta os esclarecimentos pedidos — independentemente de instrução do Presbitério.','art. 25.º, n.º 9.5'],
+['Pode ser suspenso, mas com prazo','Havendo indício sério de irregularidade, o Presbitério pode suspendê-lo de imediato; mas tem de convocar a Assembleia em 30 dias, e a suspensão caduca aos 60 sem deliberação.','art. 25.º, n.os 9.7 e 9.8']]},
+
+{id:'cfp', nome:'Sou membro da Comissão de Finanças e Património', fonte:'articulado',
+resumo:'Deixa de gerir e passa a fiscalizar — com independência e acesso irrestrito.',
+pontos:[
+['Deixa de ter poderes de gestão','A CFP passa a órgão consultivo e de fiscalização; a gestão financeira e patrimonial passa expressamente para o Presbitério.','arts. 26.º, n.º 1 e 25.º, n.º 6, d)'],
+['Perde a autonomia executiva','Desaparecem a margem de 10% na execução orçamental e o recurso ao Fundo de Reserva por iniciativa própria; passam a depender de parecer prévio e de decisão do Presbitério.','art. 19.º, n.º 6 vigente; art. 26.º, n.º 2, d)'],
+['Os seus pareceres passam a ser obrigatórios','Orçamento, contas, atos acima de 10% da receita média, alterações orçamentais relevantes e operações sobre imóveis exigem parecer escrito e prévio. Não são vinculativos, mas quem decidir em sentido divergente tem de fundamentar em ata.','art. 26.º, n.os 2 e 3.1'],
+['Ganha acesso irrestrito','Examina balancetes, livros, comprovativos e extratos com a periodicidade que definir, no mínimo trimestralmente, com acesso irrestrito a toda a documentação.','art. 26.º, n.º 4, b)'],
+['Pode escalar irregularidades','Comunica ao Presbitério qualquer irregularidade detetada e, se não for sanada, à Assembleia Geral. Apresenta ainda parecer autónomo sobre as contas, lido em conjunto com o relatório do Presbitério.','art. 26.º, n.º 4, c) e d)'],
+['Não pode executar','Os membros da CFP não podem exercer funções de tesouraria ou de execução financeira, nem movimentar contas — quem fiscaliza não executa. Ser diácono não é impedimento; movimentar contas é.','art. 26.º, n.os 8 e 9']]},
+
+{id:'presbitero', nome:'Sou presbítero', fonte:'articulado',
+resumo:'Assume a gestão financeira por inteiro, com pareceres obrigatórios e um controlo que não pode remover.',
+pontos:[
+['O Presbitério assume a gestão financeira','A gestão financeira e patrimonial, hoje formalmente da CFP, passa expressamente para o Presbitério: elabora e executa o orçamento, autoriza pagamentos e delibera sobre contas bancárias — com observância dos pareceres prévios obrigatórios da CFP.','art. 25.º, n.º 6, d)'],
+['Autoriza, mas não executa nem valida','A validação dos pagamentos cabe ao Tesoureiro e a execução material ao secretariado. O Presbitério autoriza; a segunda autorização bancária é sempre de um presbítero.','art. 25.º, n.os 9.1, 9.2 e 9.3'],
+['Não pode destituir o Tesoureiro','Pode suspendê-lo preventivamente havendo indício sério de irregularidade, mas a destituição pertence à Assembleia Geral. É deliberado: quem é controlado não afasta quem o controla.','art. 25.º, n.os 9.6 e 9.7'],
+['Passa a haver docentes e regentes','Os presbíteros passam a distinguir-se entre docentes — os pastores — e regentes, iguais em ofício e dignidade e participando em igualdade no governo colegial. Ambos podem ministrar os sacramentos.','arts. 7.º, n.os 2 e 3, e 9.º, n.º 4'],
+['Convoca e preside às reuniões diaconais','Compete-lhe convocar e presidir às reuniões diaconais, orientar e supervisionar as áreas de serviço e propor à Assembleia a sua criação, fusão ou extinção.','art. 25.º, n.º 6, k)'],
+['A exclusão deixa de lhe caber','Corrigido o texto vigente: a sanção reservada à Assembleia Geral é a exclusão. Ao Presbitério cabem as restantes sanções, e a ação disciplinar passa a ter fins expressos de restauração.','art. 25.º, n.os 6, g) e 12'],
+['Ordena e investe os oficiais','Confirmadas pela Assembleia a idoneidade e a vocação, cabe ao Presbitério ordenar e investir os oficiais em reunião pública da congregação.','arts. 8.º, n.º 1, c) e 25.º, n.º 6, j)']]},
+
+{id:'pastor', nome:'Sou pastor (Ministro do Evangelho)', fonte:'articulado',
+resumo:'O ofício passa a ter regime escrito — categorias, mandato, ausência e supervisão do pessoal.',
+pontos:[
+['O ofício passa a estar definido','O Capítulo III define o Ministro do Evangelho, as suas funções e os títulos que a Escritura lhe dá, indicando funções diversas e não graus de dignidade.','art. 9.º'],
+['Pastor Efetivo e Pastor Auxiliar','Passa a haver categorias com regime próprio: o Pastor Efetivo é eleito pela Assembleia e preside ao Presbitério; o Pastor Auxiliar é proposto pelo Presbitério, ouvido o Efetivo, e eleito pela Assembleia. Ambos com mandato de três anos, renovável.','art. 10.º, n.os 2, 3 e 5'],
+['Os sacramentos deixam de ser privativos','A ministração dos sacramentos passa a poder ser exercida também por presbítero regente. Mantém-se privativa do pastor a orientação e supervisão da liturgia.','art. 9.º, n.os 4 e 5'],
+['A ausência fica regulada','Na sua ausência ou impedimento, as funções são asseguradas pelo Presbitério, que pode delegá-las no Pastor Auxiliar ou em presbítero designado. Em ausências previsíveis, designa-se quem assegure interinamente, com comunicação à Assembleia.','art. 10.º, n.os 6 e 7'],
+['Supervisiona os funcionários','Compete-lhe a supervisão laboral dos funcionários — organização do trabalho e avaliação de desempenho —, podendo o Presbitério cometê-la a outro dos seus membros. A supervisão do secretariado quanto à execução financeira é do Tesoureiro.','art. 10.º, n.º 8'],
+['Pode ter um Assistente Pastoral','Figura nova: membro que, aspirando ao presbiterato, apoia o ministério sob a sua direção. Não é oficial ordenado nem integra o Presbitério; a designação é anual, renovável, e não confere preferência no acesso ao oficialato.','art. 10.º, n.º 4 a 4.4']]},
+
+{id:'diacono', nome:'Sou (ou serei) diácono', fonte:'articulado',
+resumo:'O diaconato passa a ofício ordenado, por áreas de serviço, aberto a ambos os sexos.',
+pontos:[
+['Passa a ser ofício eleito e ordenado','Deixa de se ser diácono por inerência de liderança. O Presbitério propõe, a Assembleia confirma por votação secreta e o Presbitério ordena e investe.','art. 13.º, n.os 11 a 13'],
+['Aberto a ambos os sexos','A proposta decide expressamente uma questão que os Estatutos vigentes não abordam: podem ser consagrados ao diaconato membros de ambos os sexos.','art. 7.º, n.º 6'],
+['Exerce-se por área de serviço','Coordena a área confiada, recruta e acompanha quem nela sirva e zela pelos recursos afetos. As descrições de funções constam do Regulamento Interno.','art. 13.º, n.os 4 e 7'],
+['O propósito fica inscrito no articulado','Atender às necessidades materiais e práticas, preservar a unidade do corpo e libertar os presbíteros para a oração e o ministério da Palavra. O diácono cuida da Igreja como um todo, não apenas da sua área.','art. 13.º, n.os 1 a 3'],
+['Discrição no cuidado dos necessitados','Mantém registo escrito dos auxílios, acessível ao Presbitério e à CFP, mas à congregação são comunicados apenas os totais — sem identificar beneficiários nem casos.','art. 13.º, n.º 9'],
+['Gratuito, com exceção quanto a contrato','O exercício é gratuito, com direito a reembolso de despesas. A Igreja pode contratar quem exerça o diaconato noutras áreas — nunca na tesouraria.','art. 13.º, n.os 17 a 19'],
+['Fica sujeito às inibições de voto','As regras de conflito de interesses aplicáveis aos titulares de órgãos sociais passam a aplicar-se aos diáconos.','arts. 13.º, n.º 20 e 21.º, n.º 4']]}
+];
+
 /* ================= Lógica ================= */
 const ESTADOS = {
   novo:{rotulo:'Novo', cor:'#2e7d4f'},
@@ -2172,7 +2522,75 @@ document.querySelectorAll('.botao-doc').forEach(b=>b.addEventListener('click',()
   $('#painelDocs').classList.toggle('duplo', modo==='duplo');
   $('#docVigente').hidden = !(modo==='vigente' || modo==='duplo');
   $('#docProposta').hidden = !(modo==='proposta' || modo==='duplo');
+  $('#docTecnico').hidden = modo!=='tecnico';
 }));
+
+/* ---------- Anexo Técnico (texto integral) ---------- */
+(function renderTecnico(){
+  $('#leituraTecnico').innerHTML = ANEXO_TECNICO.map(([tipo,x])=>{
+    if(tipo==='sec') return `<div class="cap-doc">${esc(x)}</div>`;
+    if(tipo==='sub') return `<div class="art-doc">${esc(x)}</div>`;
+    if(tipo==='lista') return '<ul style="padding-left:1.2rem;font-size:.92rem">'+
+      x.map(i=>`<li style="margin:.3rem 0">${esc(i)}</li>`).join('')+'</ul>';
+    if(tipo==='tab'){
+      const [cab,...linhas]=x;
+      return '<div class="envolve-tabela" style="margin:.6rem 0"><table><thead><tr>'+
+        cab.map(c=>`<th>${esc(c)}</th>`).join('')+'</tr></thead><tbody>'+
+        linhas.map(l=>'<tr>'+l.map((c,i)=>i===0?`<td><strong>${esc(c)}</strong></td>`:`<td>${esc(c)}</td>`).join('')+'</tr>').join('')+
+        '</tbody></table></div>';
+    }
+    return `<div class="txt-doc"><p>${esc(x)}</p></div>`;
+  }).join('');
+})();
+
+/* ---------- O que muda para mim ---------- */
+(function renderPerfis(){
+  $('#botoesPerfil').innerHTML = PERFIS.map((p,i)=>
+    `<button class="botao-doc" data-perfil="${p.id}" aria-selected="${i===0}">${esc(p.nome)}</button>`).join('');
+  const mostrar = id=>{
+    const p = PERFIS.find(x=>x.id===id); if(!p) return;
+    document.querySelectorAll('[data-perfil]').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.perfil===id)));
+    const selo = p.fonte==='AT§3'
+      ? '<span class="selo-fonte doc">Perfil documentado — Anexo Técnico, §3</span>'
+      : '<span class="selo-fonte">Resume o que os artigos determinam</span>';
+    $('#painelPerfil').innerHTML =
+      `<div class="cartao cab-perfil"><h3>${esc(p.nome)}</h3><p style="font-size:.92rem">${esc(p.resumo)}</p>
+        <div style="margin-top:.4rem">${selo}</div></div>` +
+      p.pontos.map(([t,d,r])=>
+        `<div class="cartao ponto-perfil"><h4>${esc(t)}</h4><p>${esc(d)}</p>
+          <span class="ref-ponto">${esc(r)}</span></div>`).join('');
+  };
+  document.querySelectorAll('[data-perfil]').forEach(b=>b.addEventListener('click',()=>mostrar(b.dataset.perfil)));
+  mostrar(PERFIS[0].id);
+})();
+
+/* ---------- Glossário ---------- */
+(function(){
+  const realce=(t,q)=>{
+    if(!q) return esc(t);
+    const i = semAcentos(t).indexOf(q);
+    if(i<0) return esc(t);
+    return esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+q.length))+'</mark>'+esc(t.slice(i+q.length));
+  };
+  function render(){
+    const q = semAcentos($('#pesquisaGloss').value.trim());
+    let n=0, html='';
+    GLOSSARIO.forEach(g=>{
+      const vis = g.termos.filter(([t,d])=> !q || semAcentos(t+' '+d).includes(q));
+      if(!vis.length) return;
+      n += vis.length;
+      html += `<div class="grupo-gloss">${esc(g.g)}</div><dl class="lista-gloss">`;
+      html += vis.map(([t,d,r])=>`<div class="termo"><dt>${realce(t,q)}</dt><dd>${realce(d,q)}
+        <span class="ref-termo">${esc(r)}</span></dd></div>`).join('');
+      html += '</dl>';
+    });
+    $('#listaGlossario').innerHTML = html || '<p class="suave">Nenhum termo corresponde à pesquisa.</p>';
+    const tot = GLOSSARIO.reduce((s,g)=>s+g.termos.length,0);
+    $('#contagemGloss').textContent = q ? `A mostrar ${n} de ${tot} termos.` : `${tot} termos, em ${GLOSSARIO.length} grupos.`;
+  }
+  $('#pesquisaGloss').addEventListener('input',render);
+  render();
+})();
 </script>
 </body>
 </html>
