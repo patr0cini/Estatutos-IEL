@@ -281,11 +281,18 @@ details.acordeao summary::-webkit-details-marker{display:none}
 /* ---------- glossário ---------- */
 .grupo-gloss{margin:1.3rem 0 .5rem;font-family:var(--serifada);font-size:1.05rem;color:var(--ardosia);
   border-bottom:1px solid var(--linha);padding-bottom:.25rem}
-.lista-gloss{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
-.termo{background:#fff;border:1px solid var(--linha);border-left:3px solid var(--ardosia);border-radius:0 8px 8px 0;padding:.6rem .8rem}
-.termo dt{font-weight:700;font-size:.92rem;color:var(--texto);margin-bottom:.15rem}
-.termo dd{font-size:.86rem;color:var(--texto);margin:0}
-.termo .ref-termo{display:block;margin-top:.3rem;font-size:.75rem;color:var(--texto-suave)}
+.lista-gloss{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));align-items:start}
+.termo{background:#fff;border:1px solid var(--linha);border-left:3px solid var(--ardosia);border-radius:0 8px 8px 0}
+.termo summary{cursor:pointer;list-style:none;padding:.55rem .8rem;font-weight:700;font-size:.92rem;
+  color:var(--texto);display:flex;gap:.5rem;align-items:baseline}
+.termo summary::-webkit-details-marker{display:none}
+.termo summary::before{content:"\25B8";color:var(--ardosia);font-weight:400;flex:0 0 auto;
+  display:inline-block;transition:transform .15s ease}
+.termo[open] summary::before{transform:rotate(90deg)}
+.termo summary:hover{color:var(--ardosia-escura)}
+.termo[open] summary{border-bottom:1px solid var(--linha)}
+.termo .def{padding:.5rem .8rem .65rem 1.8rem;font-size:.86rem;color:var(--texto)}
+.termo .ref-termo{display:block;margin-top:.35rem;font-size:.75rem;color:var(--texto-suave)}
 mark{background:#F3E6C4;color:inherit;border-radius:2px;padding:0 1px}
 
 /* ---------- rodapé ---------- */
@@ -788,7 +795,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
 <!-- ================= 9. GLOSSÁRIO ================= -->
 <section id="sep-glossario" class="separador" role="tabpanel" aria-label="Glossário">
   <h2>Glossário</h2>
-  <p class="intro-seccao">Os termos que aparecem nos Estatutos e na proposta, explicados em linguagem corrente, com indicação do artigo onde constam. Destina-se a quem não tem formação jurídica — nenhuma definição substitui o texto dos documentos.</p>
+  <p class="intro-seccao">Os termos que aparecem nos Estatutos e na proposta, explicados em linguagem corrente. Selecione um termo para ver a definição e o artigo onde consta. Destina-se a quem não tem formação jurídica — nenhuma definição substitui o texto dos documentos.</p>
   <div class="barra-filtros">
     <input type="search" id="pesquisaGloss" placeholder="Procurar um termo…" aria-label="Procurar um termo no glossário">
   </div>
@@ -2579,10 +2586,12 @@ document.querySelectorAll('.botao-doc').forEach(b=>b.addEventListener('click',()
       const vis = g.termos.filter(([t,d])=> !q || semAcentos(t+' '+d).includes(q));
       if(!vis.length) return;
       n += vis.length;
-      html += `<div class="grupo-gloss">${esc(g.g)}</div><dl class="lista-gloss">`;
-      html += vis.map(([t,d,r])=>`<div class="termo"><dt>${realce(t,q)}</dt><dd>${realce(d,q)}
-        <span class="ref-termo">${esc(r)}</span></dd></div>`).join('');
-      html += '</dl>';
+      html += `<div class="grupo-gloss">${esc(g.g)}</div><div class="lista-gloss">`;
+      html += vis.map(([t,d,r])=>`<details class="termo"${q?' open':''}>
+        <summary>${realce(t,q)}</summary>
+        <div class="def">${realce(d,q)}<span class="ref-termo">${esc(r)}</span></div>
+      </details>`).join('');
+      html += '</div>';
     });
     $('#listaGlossario').innerHTML = html || '<p class="suave">Nenhum termo corresponde à pesquisa.</p>';
     const tot = GLOSSARIO.reduce((s,g)=>s+g.termos.length,0);
