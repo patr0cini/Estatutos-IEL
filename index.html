@@ -562,7 +562,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
       <tbody>
         <tr><td><strong>Designação</strong></td><td>Eleito pela AG</td><td>Eleito pela AG</td><td>Confirmado pela AG (art. 13.º)</td></tr>
         <tr><td><strong>Ordenação</strong></td><td>Presbitério</td><td>Presbitério</td><td>Presbitério</td></tr>
-        <tr><td><strong>Titular de órgão social</strong></td><td class="sim">Sim</td><td class="sim">Sim</td><td class="nao">Não</td></tr>
+        <tr><td><strong title="Descreve o que cada ofício confere por inerência — não uma incompatibilidade. A elegibilidade para a CFP rege-se pelo artigo 26.º.">Titular de órgão social por inerência do ofício</strong></td><td class="sim">Sim</td><td class="sim">Sim</td><td class="nao">Não</td></tr>
         <tr><td><strong>Sacramentos</strong></td><td>Ministra</td><td>Ministra</td><td class="nao">Não</td></tr>
         <tr><td><strong>Supervisão da liturgia</strong></td><td>Privativa (se pastor)</td><td class="nao">Não</td><td class="nao">Não</td></tr>
         <tr><td><strong>Sexo</strong></td><td>Masculino</td><td>Masculino</td><td>Ambos</td></tr>
@@ -573,6 +573,14 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
   </div>
 
   <p class="mini suave" style="margin-top:.6rem">Os ofícios são perpétuos quanto à ordenação recebida, mas o seu exercício é temporário (art. 7.º, n.º 4). Nenhum oficial pode exercer simultaneamente dois ofícios (art. 7.º, n.º 5). O diaconato é aberto a ambos os sexos; o presbiterato é reservado a homens (art. 7.º, n.º 6, decisão que a proposta assinala expressamente em nota).</p>
+
+  <div class="cartao" style="border-left:5px solid var(--ardosia);margin-top:.9rem">
+    <h4 style="font-size:1rem;margin-bottom:.35rem">Isto significa que um diácono não pode integrar a CFP?</h4>
+    <p style="font-size:.9rem"><strong>Não.</strong> A linha acima descreve o que cada ofício confere por inerência, não uma incompatibilidade. A elegibilidade para a Comissão de Finanças e Património rege-se pelo artigo 26.º, e não pelo ofício que a pessoa exerce.</p>
+    <p style="font-size:.9rem">Os requisitos estão no <strong>art. 26.º, n.º 9</strong>: ser membro da IEL há mais de 3 anos, boa reputação financeira, experiência em gestão financeira e visão alargada da igreja. O ofício de diácono não entra na equação.</p>
+    <p style="font-size:.9rem">Existe, porém, uma incompatibilidade <strong>de função</strong>, no <strong>art. 26.º, n.º 8</strong>: os membros da CFP não podem exercer funções de tesouraria ou de execução financeira, nem movimentar contas bancárias. É o fecho da lógica da proposta — quem fiscaliza não executa.</p>
+    <p style="font-size:.9rem">Consequência direta: <strong>o Tesoureiro não pode integrar a CFP</strong>, por movimentar contas bancárias (art. 25.º, n.º 9.3) — e não por ser diácono. <button class="ligacao-texto" data-ir="financas">Ver o controlo financeiro</button>.</p>
+  </div>
 
   <h3>O diaconato na proposta</h3>
   <div class="cartao">
@@ -700,7 +708,7 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
 <!-- ================= 7. QUESTÕES EM ABERTO ================= -->
 <section id="sep-questoes" class="separador" role="tabpanel" aria-label="Questões em aberto e próximos passos">
   <h2>Questões em aberto</h2>
-  <p class="intro-seccao">A própria proposta assinala matérias por decidir (Anexo Técnico, §6). O painel apresenta-as como estão no documento: <strong>em aberto</strong>, não resolvidas.</p>
+  <p class="intro-seccao">A própria proposta assinala matérias por decidir (Anexo Técnico, §6); acresce uma questão identificada na leitura da proposta. Cada cartão indica a sua origem. Todas são apresentadas como estão: <strong>em aberto</strong>, não resolvidas.</p>
   <div id="listaQuestoes"></div>
 
   <h3>Matérias remetidas para o Regulamento Interno</h3>
@@ -1604,14 +1612,17 @@ ganha:'A membrasia ganha um compromisso explícito e recíproco; o Anexo Técnic
 abertas:['Integração nos Estatutos: o Anexo Técnico sugere que o Presbitério pondere se pretende o valor normativo pleno (com sindicabilidade disciplinar e rigidez de alteração de ¾), ou a alternativa de aprovar o Pacto por deliberação da Assembleia Geral sem o integrar nos Estatutos (§8.1).']},
 ];
 
-/* ===== Questões em aberto (Anexo Técnico, §6) ===== */
+/* ===== Questões em aberto ===== */
 const QUESTOES = [
-{t:'Admissão de membros', d:'O artigo 25.º, n.º 6, i) atribui ao Presbitério a admissão, enquanto o n.º 6, f) manda propô-la à Assembleia Geral. A duplicação subsiste e merece decisão autónoma.', ref:'Arts. 25.º, n.º 6, i) e f)'},
-{t:'Competência regulamentar', d:'Os artigos 2.º, n.os 4 e 5 e 3.º, n.º 15 atribuem ao Presbitério a aprovação de regulamentos, ao passo que o artigo 24.º, n.º 10, e) reserva o Regulamento Interno à Assembleia Geral.', ref:'Arts. 2.º, 3.º e 24.º'},
-{t:'Bênção apostólica', d:'Aberta a ministração dos sacramentos ao presbítero regente, importa decidir se a invocação da bênção apostólica segue o mesmo regime ou permanece função do ministro.', ref:'Art. 9.º, n.º 3, c)'},
-{t:'Lista fechada', d:'O artigo 19.º, n.º 1 mantém a eleição em lista proposta pelo Presbitério, o que está em alguma tensão com a definição do presbítero regente como «representante imediato dos membros».', ref:'Arts. 19.º, n.º 1 e 12.º, n.º 1'},
-{t:'Fronteira da administração corrente', d:'Retirada a cláusula residual do artigo 24.º, n.º 10, d), a residualidade passa a estar apenas na alínea k), que cede perante a competência de outros órgãos. Ao Presbitério cabe a administração corrente e ordinária. A fronteira entre uma e outra não está definida em valor nem em natureza; se se revelar litigiosa na prática, o Regulamento Interno é o lugar para a concretizar.', ref:'Arts. 24.º, n.º 10, k) e 25.º, n.º 6, d)'},
-{t:'Quórum da Assembleia', d:'O regime do artigo 25.º, n.º 9.6, c) exige a presença da maioria dos membros. Convém verificar, em face da participação habitual nas assembleias ordinárias, se o mecanismo do n.º 9.6.1 é suficiente para evitar bloqueios.', ref:'Art. 25.º, n.os 9.6 e 9.6.1'},
+{t:'Admissão de membros', d:'O artigo 25.º, n.º 6, i) atribui ao Presbitério a admissão, enquanto o n.º 6, f) manda propô-la à Assembleia Geral. A duplicação subsiste e merece decisão autónoma.', ref:'Arts. 25.º, n.º 6, i) e f)', origem:'Anexo Técnico, §6'},
+{t:'Competência regulamentar', d:'Os artigos 2.º, n.os 4 e 5 e 3.º, n.º 15 atribuem ao Presbitério a aprovação de regulamentos, ao passo que o artigo 24.º, n.º 10, e) reserva o Regulamento Interno à Assembleia Geral.', ref:'Arts. 2.º, 3.º e 24.º', origem:'Anexo Técnico, §6'},
+{t:'Bênção apostólica', d:'Aberta a ministração dos sacramentos ao presbítero regente, importa decidir se a invocação da bênção apostólica segue o mesmo regime ou permanece função do ministro.', ref:'Art. 9.º, n.º 3, c)', origem:'Anexo Técnico, §6'},
+{t:'Lista fechada', d:'O artigo 19.º, n.º 1 mantém a eleição em lista proposta pelo Presbitério, o que está em alguma tensão com a definição do presbítero regente como «representante imediato dos membros».', ref:'Arts. 19.º, n.º 1 e 12.º, n.º 1', origem:'Anexo Técnico, §6'},
+{t:'Fronteira da administração corrente', d:'Retirada a cláusula residual do artigo 24.º, n.º 10, d), a residualidade passa a estar apenas na alínea k), que cede perante a competência de outros órgãos. Ao Presbitério cabe a administração corrente e ordinária. A fronteira entre uma e outra não está definida em valor nem em natureza; se se revelar litigiosa na prática, o Regulamento Interno é o lugar para a concretizar.', ref:'Arts. 24.º, n.º 10, k) e 25.º, n.º 6, d)', origem:'Anexo Técnico, §6'},
+{t:'Quórum da Assembleia', d:'O regime do artigo 25.º, n.º 9.6, c) exige a presença da maioria dos membros. Convém verificar, em face da participação habitual nas assembleias ordinárias, se o mecanismo do n.º 9.6.1 é suficiente para evitar bloqueios.', ref:'Art. 25.º, n.os 9.6 e 9.6.1', origem:'Anexo Técnico, §6'},
+{t:'Fronteira da execução financeira', d:'O art. 26.º, n.º 8 impede os membros da CFP de exercer «funções de tesouraria ou de execução financeira». O Anexo Técnico descreve os diáconos como coordenando «áreas com orçamento próprio». Um diácono que gasta do orçamento da sua área exerce execução financeira? Se sim, praticamente nenhum diácono poderá integrar a CFP. Se não, pode. O texto não define a fronteira, e a dúvida só se tornaria visível depois de alguém já ter sido eleito.',
+ vias:'(a) Definir «execução financeira» no Regulamento da CFP, que o art. 26.º, n.º 10 já prevê; ou (b) delimitar expressamente no n.º 8 — por exemplo, que o impedimento abrange quem valide ou ordene pagamentos e quem tenha acesso a credenciais bancárias, e não a mera responsabilidade por uma rubrica orçamental.',
+ ref:'Art. 26.º, n.os 8 e 10', origem:'identificada na leitura da proposta'},
 ];
 
 /* ===== Detalhes dos organogramas ===== */
@@ -1992,8 +2003,9 @@ document.querySelectorAll('[data-org]').forEach(b=>b.addEventListener('click',()
 /* ---------- questões em aberto ---------- */
 $('#listaQuestoes').innerHTML = QUESTOES.map(q=>`
   <div class="cartao questao">
-    <h4><span class="cracha aberto">Em aberto</span>${esc(q.t)}<span class="mini suave" style="font-weight:400">· ${esc(q.ref)}</span></h4>
+    <h4><span class="cracha aberto">Em aberto</span>${esc(q.t)}<span class="mini suave" style="font-weight:400">· ${esc(q.ref)} · ${esc(q.origem)}</span></h4>
     <p>${esc(q.d)}</p>
+    ${q.vias?`<p><strong>Vias de resolução:</strong> ${esc(q.vias)}</p>`:''}
   </div>`).join('');
 
 /* ---------- texto do Pacto no separador Fé ---------- */
