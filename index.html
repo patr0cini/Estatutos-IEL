@@ -819,6 +819,9 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
       <li style="margin:.25rem 0">Descrições de funções de cada área de serviço diaconal (art. 13.º, n.º 7);</li>
       <li style="margin:.25rem 0">Limite de valor para despesas correntes do Tesoureiro (art. 25.º, n.º 9.4);</li>
       <li style="margin:.25rem 0">Limiar de obrigações pecuniárias que exige deliberação da Assembleia Geral (art. 24.º, n.º 10, d);</li>
+      <li style="margin:.25rem 0">Limites por operação e mensal do instrumento de pagamento afeto ao secretariado (art. 25.º, n.º 9.3.3, b);</li>
+      <li style="margin:.25rem 0">Montante global do fundo de maneio e limites por despesa e mensais (art. 25.º, n.º 13.1);</li>
+      <li style="margin:.25rem 0">Prazo de entrega dos documentos de despesa a cargo do fundo de maneio (art. 25.º, n.º 13.3);</li>
       <li style="margin:.25rem 0">Regulamento próprio da CFP (art. 26.º, n.º 10);</li>
       <li style="margin:.25rem 0">Processo de preparação e avaliação do Assistente Pastoral (art. 10.º, n.º 4);</li>
       <li style="margin:.25rem 0">Periodicidade da leitura pública do Pacto de Membrasia (anexo 3);</li>
@@ -2012,6 +2015,9 @@ const ANEXO_TECNICO = [
 ['lista',['Descrições de funções de cada área de serviço diaconal (art. 13.º, n.º 7);',
 'Limite de valor para despesas correntes do Tesoureiro (art. 25.º, n.º 9.4);',
 'Limiar de obrigações pecuniárias que exige deliberação da Assembleia Geral (art. 24.º, n.º 10, d);',
+'Limites por operação e mensal do instrumento de pagamento afeto ao secretariado (art. 25.º, n.º 9.3.3, b);',
+'Montante global do fundo de maneio e limites por despesa e mensais (art. 25.º, n.º 13.1);',
+'Prazo de entrega dos documentos de despesa a cargo do fundo de maneio (art. 25.º, n.º 13.3);',
 'Regulamento próprio da CFP (art. 26.º, n.º 10);',
 'Processo de preparação e avaliação do Assistente Pastoral (art. 10.º, n.º 4);',
 'Periodicidade da leitura pública do Pacto de Membrasia (anexo 3);',
@@ -2140,10 +2146,14 @@ const GLOSSARIO = [
 ['Ratificação','A confirmação posterior, pela Assembleia Geral, de um ato já praticado por outro órgão — por exemplo, a exoneração de um oficial pelo Presbitério.','art. 14.º, n.º 4, e)'],
 ['Parecer prévio obrigatório','Uma opinião escrita que tem de ser pedida e emitida antes da decisão. Na proposta, os pareceres da CFP são obrigatórios quanto à emissão.','art. 26.º, n.º 2'],
 ['Parecer não vinculativo','Um parecer que não obriga quem decide. A deliberação que dele divirja tem de ser fundamentada, ficando parecer e fundamentação registados em ata.','art. 26.º, n.º 3.1'],
+['Minuta','Aprovação, no final da própria reunião, da parte da ata respeitante a deliberação que não comporte demora, para que produza efeitos de imediato. Evita, por exemplo, que o registo da alteração dos Estatutos espere pela Assembleia seguinte.','art. 23.º, n.º 6'],
 ['Ata','O registo escrito e assinado das deliberações de um órgão. Das reuniões diaconais, que não são de órgão social, lavra-se apenas registo sumário.','art. 23.º']]},
 
 {g:'Dinheiro e património', termos:[
 ['Segregação de funções','O princípio de separar quem autoriza, quem valida, quem executa e quem fiscaliza uma despesa, para que nenhuma pessoa controle sozinha todo o circuito.','Anexo Técnico, §1'],
+['Fundo de maneio','Montante fixo, em numerário ou em instrumento pré-carregado, para despesas correntes e imediatas que não comportam deliberação prévia. É reposto pelo circuito normal, mediante documentos de despesa.','art. 25.º, n.º 13'],
+['Execução financeira','Validar, ordenar ou processar pagamentos, dispor de credenciais de movimentação, ser titular do instrumento de pagamento do secretariado ou deter o fundo de maneio. Não o é a responsabilidade por uma rubrica orçamental. A distinção importa porque os membros da CFP não podem exercê-la.','art. 26.º, n.os 8.1 e 8.2'],
+['Débito direto','Autorização dada ao credor para cobrar diretamente na conta. A dupla autorização exerce-se uma única vez, na constituição do mandato, e não a cada cobrança.','art. 25.º, n.º 9.3.3, a)'],
 ['Cabimento orçamental','A verificação de que existe verba prevista no orçamento para suportar uma despesa. É uma das três coisas que o Tesoureiro confere antes de validar um pagamento.','art. 25.º, n.º 9.1'],
 ['Execução orçamental','A concretização do orçamento aprovado ao longo do ano. Sem orçamento aprovado, prossegue ao nível do exercício anterior.','art. 25.º, n.º 10'],
 ['Fundo de Reserva','A poupança acumulada da Igreja. Na proposta, qualquer recurso a este fundo exige parecer prévio da CFP.','art. 26.º, n.º 2, d)'],
@@ -2159,6 +2169,8 @@ const GLOSSARIO = [
 ['Declaração de Fé','O documento doutrinário que é parte integrante dos Estatutos (Anexo 1). A proposta substitui-o integralmente.','art. 1.º, n.º 3; Anexo 1'],
 ['Ordenança','Ato instituído por Cristo e praticado pela Igreja: o batismo do crente por imersão e a Ceia do Senhor. A Declaração de Fé usa este termo em vez de «sacramento».','Anexo 1, art. VII'],
 ['Sacramentos','No articulado, a ministração do batismo e da Ceia. Na proposta não é privativa do ministro: também o presbítero regente os pode ministrar.','arts. 9.º, n.º 4 e 12.º, n.º 2, f)'],
+['Bênção apostólica','A bênção invocada sobre a congregação, habitualmente no encerramento do culto. Deixou de ser privativa do ministro: qualquer presbítero a invoca, e também membro reconhecido que sirva num ministério, quando convidado pelo Presbitério para ato determinado.','art. 9.º, n.os 3, c), 4 e 4.1'],
+['Visitação pastoral','A visita de pastoreio — vigilância, admoestação particular, instrução e consolação —, que o presbítero regente exerce auxiliando o pastor. Distingue-se do cuidado diaconal dos necessitados, doentes, idosos e viúvas.','art. 12.º, n.º 2, b); art. 13.º, n.os 5 e 9'],
 ['Liturgia','A ordem e a condução do culto. A sua orientação e supervisão é privativa do ministro que pastoreia a Igreja.','art. 9.º, n.os 3, d) e 5'],
 ['Munus espiritual','A função ou encargo espiritual do ministro — a expressão usada nos Estatutos a propósito da sua remuneração.','art. 6.º, n.º 1'],
 ['Neófito','Quem é recém-convertido ou recém-chegado à fé. Instruí-los compete ao ministro e ao presbítero regente.','arts. 11.º, f) e 12.º, n.º 2, c)'],
