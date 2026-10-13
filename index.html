@@ -240,6 +240,22 @@ details.acordeao[open] summary::before{transform:rotate(90deg)}
 details.acordeao .interior{padding:.2rem .95rem .95rem;font-size:.88rem;border-top:1px solid var(--linha)}
 details.acordeao summary::-webkit-details-marker{display:none}
 
+/* ---------- blocos simples do controlo financeiro ---------- */
+.resumo-chave{border-left:5px solid var(--ardosia);background:var(--nevoa)}
+.resumo-chave h3{margin-top:0}
+.frase-chave{font-size:1rem;line-height:1.6;margin:.4rem 0}
+.par-colunas{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:.8rem;align-items:start}
+.cartao.faz{border-left:4px solid var(--c-novo)}
+.cartao.nao-faz{border-left:4px solid var(--c-eliminado)}
+.cartao.faz h4,.cartao.nao-faz h4{font-size:.98rem;margin:0 0 .45rem}
+.cartao.faz h4{color:var(--c-novo)}
+.cartao.nao-faz h4{color:var(--c-eliminado)}
+.lista-simples{padding-left:1.15rem;font-size:.9rem;margin:0}
+.lista-simples li{margin:.34rem 0}
+.tabela-pratica td{vertical-align:top;font-size:.9rem}
+.tabela-pratica td:first-child{width:28%;font-weight:600;color:var(--ardosia-escura)}
+.aviso-detalhe{font-size:.88rem;color:var(--texto-suave);margin:1.4rem 0 .4rem}
+
 /* ---------- autoria e textos integrais ---------- */
 .painel-autoria{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.8rem;
   background:#fff;border:1px solid var(--linha);border-left:5px solid var(--ardosia);border-radius:8px;
@@ -508,11 +524,65 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
 
 <!-- ================= 4. CONTROLO FINANCEIRO ================= -->
 <section id="sep-financas" class="separador" role="tabpanel" aria-label="Controlo financeiro">
-  <h2>Controlo financeiro — a mudança mais estrutural</h2>
-  <p class="intro-seccao">A proposta separa quem autoriza, quem valida, quem executa, quem fiscaliza e quem aprova. Segregação de funções segundo o Anexo Técnico, §1.</p>
+  <h2>Controlo financeiro</h2>
+  <p class="intro-seccao">A mudança mais estrutural da proposta. Começa aqui pelo essencial; o detalhe está nos blocos do fim, que abrem clicando.</p>
 
+  <div class="cartao resumo-chave">
+    <h3>O essencial em quatro frases</h3>
+    <p class="frase-chave"><strong>1.</strong> Quem decide as despesas é o <strong>Presbitério</strong>. Não é o Tesoureiro, não é a CFP.</p>
+    <p class="frase-chave"><strong>2.</strong> O <strong>Tesoureiro</strong> confere, antes de o dinheiro sair, que a despesa foi decidida, tem documento e tem dinheiro no orçamento. Confere — não aprova.</p>
+    <p class="frase-chave"><strong>3.</strong> A <strong>CFP</strong> fiscaliza e dá pareceres. Não gere nem paga.</p>
+    <p class="frase-chave"><strong>4.</strong> Para as compras pequenas e imediatas há um <strong>fundo de maneio</strong>: compra-se na hora e entrega-se o documento depois.</p>
+  </div>
+
+  <h3>O Tesoureiro, em concreto</h3>
+  <div class="par-colunas">
+    <div class="cartao faz">
+      <h4>O que faz</h4>
+      <ul class="lista-simples">
+        <li>Confere cada pagamento antes de sair: há autorização? há documento? há verba no orçamento? <span class="suave">(n.º 9.1)</span></li>
+        <li>Dá uma das duas autorizações obrigatórias no banco — a outra é sempre de um presbítero. <span class="suave">(n.º 9.3)</span></li>
+        <li>Recebe e deposita as ofertas e as restantes receitas. <span class="suave">(n.º 9.1)</span></li>
+        <li>Mantém os registos e faz a reconciliação bancária.</li>
+        <li>Entrega um balancete à CFP de três em três meses, por sua iniciativa e sem precisar de ordem do Presbitério. <span class="suave">(n.º 9.5)</span></li>
+      </ul>
+    </div>
+    <div class="cartao nao-faz">
+      <h4>O que não pode fazer</h4>
+      <ul class="lista-simples">
+        <li>Autorizar despesas ou assumir compromissos pela Igreja. <span class="suave">(n.º 9.4)</span></li>
+        <li>Assinar contratos — essas duas assinaturas são de presbíteros. <span class="suave">(n.º 5)</span></li>
+        <li>Ser membro do Presbitério. <span class="suave">(n.º 9)</span></li>
+        <li>Integrar a CFP, porque movimenta contas. <span class="suave">(art. 26.º, n.º 8)</span></li>
+        <li>Receber qualquer remuneração da Igreja. <span class="suave">(art. 13.º, n.º 19)</span></li>
+        <li>Coordenar outra área de serviço diaconal. <span class="suave">(n.º 9.3.1)</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="mini suave" style="margin-top:.5rem">Numa frase: <strong>o Tesoureiro não é quem aprova — é quem confere que alguém aprovou.</strong> E é um controlo que o Presbitério não pode remover: só a Assembleia Geral o pode destituir (n.º 9.6).</p>
+
+  <h3>O fundo de maneio, em concreto</h3>
   <div class="cartao">
-    <h3 style="margin-top:0">O circuito da despesa</h3>
+    <p style="font-size:.92rem;margin-top:0">É a resposta à pergunta prática que mais surge: <em>«então já não posso ir comprar o que falta para o almoço da Igreja?»</em> <strong>Pode.</strong></p>
+    <div class="envolve-tabela">
+      <table class="tabela-pratica">
+        <tbody>
+          <tr><td>Para que serve</td><td>Necessidades correntes e imediatas que não dão tempo de esperar por uma reunião do Presbitério. <span class="suave">(n.º 13.1)</span></td></tr>
+          <tr><td>Quem pode gastar</td><td>Quem o Presbitério designar, de entre oficiais, funcionários e responsáveis de ministério — o pastor incluído. A designação é comunicada ao Tesoureiro e à CFP. <span class="suave">(n.º 13.2)</span></td></tr>
+          <tr><td>Quanto</td><td>O montante do fundo e os limites por despesa e por mês ficam no Regulamento Interno, não nos Estatutos. <span class="suave">(n.º 13.1)</span></td></tr>
+          <tr><td>Como funciona</td><td>Pode ser dinheiro ou um cartão pré-carregado. Compra-se, entrega-se o documento a quem guarda o fundo, e o fundo é reposto. <span class="suave">(n.os 13.3 a 13.5)</span></td></tr>
+          <tr><td>Obrigatório</td><td>Documento de cada despesa, com a finalidade e a área a que respeita. Sem documento, quem gastou responde pessoalmente pelo valor. <span class="suave">(n.º 13.3)</span></td></tr>
+          <tr><td>Não serve para</td><td>Remunerações, contratos duradouros e despesas que exijam parecer prévio da CFP. E não se pode partir uma despesa grande em várias pequenas para caber no limite. <span class="suave">(n.º 13.6)</span></td></tr>
+          <tr><td>Se for urgente e grande</td><td>Dois presbíteros — o Responsável e outro — autorizam logo, com ratificação na reunião seguinte, comunicação à CFP e sem prejuízo do que está reservado à Assembleia. <span class="suave">(n.º 13.8)</span></td></tr>
+          <tr><td>Quem verifica</td><td>O Presbitério toma conhecimento na reunião seguinte; o Tesoureiro inclui o fundo no balancete; a CFP confere saldo e documentação em cada exame. <span class="suave">(n.º 13.7)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mini suave">Guardar o fundo ou gastar dele <strong>não</strong> dá acesso às contas da Igreja (n.º 13.5).</p>
+  </div>
+
+  <h3>O circuito da despesa</h3>
+  <div class="cartao">
     <div class="fluxo">
       <div class="passo-fluxo"><div class="fase">1 · Autorizar</div><div class="acao">Autoriza a despesa</div><div class="quem">Presbitério</div><div class="como">deliberação colegial (art. 25.º, n.º 6, d)</div></div>
       <div class="seta" aria-hidden="true">&#10142;</div>
@@ -526,84 +596,72 @@ footer.rodape{background:var(--fundo-escuro);color:#C7D4DC;text-align:center;fon
       <div class="seta" aria-hidden="true">&#10142;</div>
       <div class="passo-fluxo"><div class="fase">6 · Aprovar</div><div class="acao">Aprova as contas</div><div class="quem">Assembleia Geral</div><div class="como">com parecer da CFP (art. 24.º, n.º 10, f)</div></div>
     </div>
-    <p class="mini suave">Nenhum pagamento é autorizado exclusivamente por diáconos: a segunda autorização bancária é sempre de um presbítero (art. 25.º, n.º 9.3). Este é o caminho normal; para a movimentação que não comporta assinatura no momento, e para as pequenas despesas, há três variantes — ver «E as compras do dia a dia?», abaixo.</p>
+    <p class="mini suave">Este é o caminho normal. Nenhum pagamento é autorizado exclusivamente por diáconos: a segunda autorização bancária é sempre de um presbítero (n.º 9.3). Há três variantes para o que não comporta assinatura no momento — o fundo de maneio acima, o cartão do secretariado e os débitos diretos.</p>
   </div>
 
-  <h3>As três peças do desenho</h3>
-  <p class="intro-seccao mini">«Três peças sustentam o desenho, e cada uma falha sozinha se as outras cederem» (Anexo Técnico, §1). Cada peça protege as restantes: retirada uma, as outras duas deixam de ser suficientes.</p>
-  <div class="grelha grelha-pecas">
-    <div class="cartao peca">
-      <h4>Credenciais fora de quem executa</h4>
-      <div class="ref">Art. 25.º, n.º 9.3, parte final</div>
-      <p>As credenciais bancárias com poder de movimentação são pessoais e intransmissíveis e não podem ser atribuídas a quem exerça funções de execução. Se esta peça ceder, quem prepara os pagamentos passa também a poder movimentá-los — e a validação do Tesoureiro deixa de ser um controlo real. O instrumento de pagamento afeto ao secretariado não é credencial para este efeito: não dá acesso a outras contas nem permite operações acima dos limites (n.º 9.3.4).</p>
+  <p class="aviso-detalhe">O que segue é o detalhe, para quem o quiser. Clique para abrir.</p>
+
+  <details class="acordeao">
+    <summary>Porque é que o Tesoureiro não assina os contratos?</summary>
+    <div class="interior">
+      <p>É uma dúvida legítima ao ler o artigo 25.º, n.º 5: <em>«a segunda assinatura não devia ser do Tesoureiro?»</em> A resposta expõe o cerne do desenho: a proposta separa duas coisas que nos Estatutos vigentes andavam misturadas.</p>
+      <p><strong>1. Vincular a Igreja em atos e contratos (n.º 5)</strong> — assumir obrigações: assinar um contrato, um arrendamento, uma adjudicação. Isso é decisão de gestão, e a gestão pertence ao Presbitério (n.º 6, d). Por isso as duas assinaturas são de presbíteros. O Tesoureiro está deliberadamente fora deste regime — e nem podia lá estar: o n.º 9 determina que não pode ser membro do Presbitério, e o n.º 9.4 que não pode autorizar despesa nem contrair obrigações.</p>
+      <p><strong>2. Movimentar contas bancárias (n.º 9.3)</strong> — executar pagamentos. Aqui, sim, a autorização do Tesoureiro é sempre obrigatória, a par da de um presbítero. É por isso que o n.º 5 termina a remeter expressamente para o n.º 9.3.</p>
+      <p><strong>O que se ganha:</strong> se o Tesoureiro também assinasse os contratos, estaria depois a validar pagamentos de obrigações que ele próprio coassinou — quem contrai e quem paga seriam a mesma pessoa. Nenhum pagamento é decidido e executado pela mesma pessoa.</p>
+      <div class="envolve-tabela" style="margin-top:.6rem">
+        <table>
+          <thead><tr><th></th><th>Atos e contratos (n.º 5)</th><th>Contas bancárias (n.º 9.3)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>O que é</strong></td><td>Assumir obrigações</td><td>Executar pagamentos</td></tr>
+            <tr><td><strong>1.ª assinatura</strong></td><td>Responsável do Presbitério</td><td>Tesoureiro (sempre)</td></tr>
+            <tr><td><strong>2.ª assinatura</strong></td><td>Membro do Presbitério designado</td><td>Responsável do Presbitério ou presbítero designado</td></tr>
+            <tr><td><strong>Tesoureiro participa?</strong></td><td class="nao">Não (n.os 9 e 9.4)</td><td class="sim">Sim, obrigatoriamente</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="cartao peca">
-      <h4>Tesouraria sempre gratuita</h4>
-      <div class="ref">Art. 13.º, n.º 19</div>
-      <p>O Tesoureiro não pode ser remunerado a qualquer título pela Igreja. A nota do articulado explica porquê: sendo o Tesoureiro um controlo sobre o Presbitério, a dependência económica face a quem contrata comprometeria a função. Se esta peça ceder, o controlador passa a depender economicamente do controlado.</p>
+  </details>
+
+  <details class="acordeao">
+    <summary>As três peças que sustentam o desenho</summary>
+    <div class="interior">
+      <p class="suave">«Três peças sustentam o desenho, e cada uma falha sozinha se as outras cederem» (Anexo Técnico, §1). Cada peça protege as restantes: retirada uma, as outras duas deixam de ser suficientes.</p>
+      <p><strong>1. Credenciais fora de quem executa</strong> <span class="suave">(n.º 9.3, parte final)</span> — as credenciais bancárias com poder de movimentação são pessoais e intransmissíveis e não podem ser atribuídas a quem exerça funções de execução. Se esta peça ceder, quem prepara os pagamentos passa também a poder movimentá-los, e a validação do Tesoureiro deixa de ser um controlo real. O instrumento de pagamento afeto ao secretariado não é credencial para este efeito: não dá acesso a outras contas nem permite operações acima dos limites (n.º 9.3.4).</p>
+      <p><strong>2. Tesouraria sempre gratuita</strong> <span class="suave">(art. 13.º, n.º 19)</span> — o Tesoureiro não pode ser remunerado a qualquer título pela Igreja. Sendo um controlo sobre o Presbitério, a dependência económica face a quem contrata comprometeria a função. Se esta peça ceder, o controlador passa a depender economicamente do controlado.</p>
+      <p><strong>3. Cessação só pela Assembleia Geral</strong> <span class="suave">(n.º 9.6)</span> — o Presbitério não pode destituir o Tesoureiro; só a Assembleia Geral, expressamente convocada, com audição prévia e escrutínio secreto. Se esta peça ceder, quem é controlado pode afastar quem o controla, e as duas primeiras peças tornam-se decorativas.</p>
     </div>
-    <div class="cartao peca">
-      <h4>Cessação só pela Assembleia Geral</h4>
-      <div class="ref">Art. 25.º, n.º 9.6</div>
-      <p>O Presbitério não pode destituir o Tesoureiro; só a Assembleia Geral, expressamente convocada, com audição prévia e escrutínio secreto. Se esta peça ceder, quem é controlado pode afastar quem o controla — e as duas primeiras peças tornam-se decorativas.</p>
+  </details>
+
+  <details class="acordeao">
+    <summary>Outras salvaguardas do Tesoureiro</summary>
+    <div class="interior">
+      <ul class="lista-simples">
+        <li><strong>Não acumulação:</strong> o Tesoureiro não coordena outra área de serviço diaconal (n.º 9.3.1) — como os restantes diáconos coordenam áreas com orçamento próprio, evita-se que valide pagamentos da sua própria área.</li>
+        <li><strong>Impedimento:</strong> os pagamentos respeitantes a área coordenada pelo Tesoureiro, ou em que este seja interessado, são autorizados por dois membros do Presbitério, ficando ele afastado tanto da validação como da autorização bancária, com comunicação à CFP (n.º 9.3.2).</li>
+        <li><strong>Prestação de contas independente:</strong> apresenta balancete à CFP pelo menos de três em três meses, com livros, comprovativos e extratos, independentemente de instrução do Presbitério (n.º 9.5).</li>
+        <li><strong>Suspensão preventiva com caducidade:</strong> havendo indício sério de irregularidade, o Presbitério pode suspendê-lo com efeito imediato, mas tem de convocar a Assembleia Geral em 30 dias, e a suspensão caduca aos 60 dias sem deliberação (n.os 9.7 a 9.9).</li>
+      </ul>
     </div>
-  </div>
+  </details>
 
-  <h3>Salvaguardas adicionais do Tesoureiro</h3>
-  <div class="cartao">
-    <ul style="padding-left:1.2rem;font-size:.9rem">
-      <li style="margin:.3rem 0"><strong>Não acumulação:</strong> o Tesoureiro não coordena outra área de serviço diaconal (art. 25.º, n.º 9.3.1) — como os restantes diáconos coordenam áreas com orçamento próprio, evita-se que valide pagamentos da sua própria área.</li>
-      <li style="margin:.3rem 0"><strong>Impedimento:</strong> os pagamentos respeitantes a área coordenada pelo Tesoureiro, ou em que este seja interessado, são autorizados por dois membros do Presbitério, ficando ele afastado da validação e da autorização bancária, com comunicação à CFP (art. 25.º, n.º 9.3.2).</li>
-      <li style="margin:.3rem 0"><strong>Segunda autorização sempre de um presbítero:</strong> a movimentação de contas exige duas autorizações — a do Tesoureiro e a do Responsável do Presbitério ou de presbítero por este designado (art. 25.º, n.º 9.3).</li>
-      <li style="margin:.3rem 0"><strong>Prestação de contas independente:</strong> o Tesoureiro apresenta balancete à CFP pelo menos de três em três meses, com livros, comprovativos e extratos, independentemente de instrução do Presbitério (art. 25.º, n.º 9.5).</li>
-      <li style="margin:.3rem 0"><strong>Suspensão preventiva com caducidade:</strong> em caso de indício sério de irregularidade, o Presbitério pode suspender o Tesoureiro com efeito imediato, mas tem de convocar a Assembleia Geral em 30 dias, e a suspensão caduca aos 60 dias sem deliberação (art. 25.º, n.os 9.7 a 9.9).</li>
-    </ul>
-  </div>
-
-  <h3>Porque é que o Tesoureiro não assina os contratos?</h3>
-  <div class="cartao" style="border-left:5px solid var(--ardosia)">
-    <p style="font-size:.92rem">É uma dúvida legítima ao ler o artigo 25.º, n.º 5: <em>«a segunda assinatura não devia ser do Tesoureiro?»</em> A resposta expõe o cerne do desenho: a proposta separa duas coisas que nos Estatutos vigentes andavam misturadas.</p>
-    <p style="font-size:.92rem"><strong>1. Vincular a Igreja em atos e contratos (art. 25.º, n.º 5)</strong> — assumir obrigações: assinar um contrato, um arrendamento, uma adjudicação. Isso é decisão de gestão, e a gestão pertence ao Presbitério (art. 25.º, n.º 6, d). Por isso as duas assinaturas são de presbíteros: o Responsável do Presbitério e outro membro do Presbitério por este designado. O Tesoureiro está deliberadamente fora deste regime — e nem podia lá estar:</p>
-    <ul style="padding-left:1.2rem;font-size:.9rem">
-      <li style="margin:.25rem 0">o n.º 9 (corpo) determina que o Tesoureiro não pode ser membro do Presbitério;</li>
-      <li style="margin:.25rem 0">o n.º 9.4 determina que o Tesoureiro não pode autorizar despesa nem contrair obrigações em nome da Igreja (salvo despesas correntes até ao limite do Regulamento Interno).</li>
-    </ul>
-    <p style="font-size:.92rem"><strong>2. Movimentar contas bancárias (art. 25.º, n.º 9.3)</strong> — executar pagamentos. Aqui, sim, a autorização do Tesoureiro é sempre obrigatória, a par da do Responsável do Presbitério ou de presbítero por este designado. É por isso que o n.º 5 termina a remeter expressamente para o n.º 9.3: os dois regimes coexistem, cada um no seu momento do circuito.</p>
-    <p style="font-size:.92rem"><strong>O circuito completo:</strong> o Presbitério decide e contrata (n.º 5) &rarr; o Tesoureiro valida o pagamento, verificando autorização, documento de despesa e cabimento orçamental (n.º 9.1) &rarr; o dinheiro só sai com duas autorizações: Tesoureiro + presbítero (n.º 9.3).</p>
-    <p style="font-size:.92rem"><strong>O que se ganha:</strong> se o Tesoureiro também assinasse os contratos, estaria depois a validar pagamentos de obrigações que ele próprio coassinou — quem contrai e quem paga seriam a mesma pessoa, e perdia-se o cruzamento de controlos que a proposta cria. Nenhum pagamento é decidido e executado pela mesma pessoa.</p>
-    <p style="font-size:.92rem"><strong>A razão histórica (Anexo Técnico, §4):</strong> nos Estatutos vigentes (art. 17.º, n.º 5), a segunda assinatura dos atos e contratos era do Representante do Conselho de Diáconos — e foi por essa via que a tesouraria migrou de facto para esse cargo, sem que a palavra «tesoureiro» constasse do texto: quem assina acaba, na prática, por gerir. Retirar o diácono da assinatura dos contratos e colocá-lo apenas na movimentação bancária é a correção direta desse desvio — fecha a porta por onde a prática atual entrou. Não houve irregularidade de ninguém; houve uma prática que cresceu num vazio normativo.</p>
-    <div class="envolve-tabela" style="margin-top:.6rem">
-      <table>
-        <thead><tr><th></th><th>Atos e contratos (n.º 5)</th><th>Contas bancárias (n.º 9.3)</th></tr></thead>
-        <tbody>
-          <tr><td><strong>O que é</strong></td><td>Assumir obrigações</td><td>Executar pagamentos</td></tr>
-          <tr><td><strong>1.ª assinatura</strong></td><td>Responsável do Presbitério</td><td>Tesoureiro (sempre)</td></tr>
-          <tr><td><strong>2.ª assinatura</strong></td><td>Membro do Presbitério designado</td><td>Responsável do Presbitério ou presbítero designado</td></tr>
-          <tr><td><strong>Tesoureiro participa?</strong></td><td class="nao">Não (n.os 9 e 9.4)</td><td class="sim">Sim, obrigatoriamente</td></tr>
-        </tbody>
-      </table>
+  <details class="acordeao">
+    <summary>Os outros dois caminhos: cartão do secretariado e débitos diretos</summary>
+    <div class="interior">
+      <p>Além do fundo de maneio, a proposta prevê dois casos em que a assinatura não pode ser dada no momento do pagamento:</p>
+      <p><strong>Instrumento de pagamento do secretariado</strong> <span class="suave">(n.º 9.3.3, b)</span> — para despesa <em>já aprovada em orçamento</em> e dentro dos limites por operação e mensais fixados no Regulamento Interno. Nesse caso a aprovação orçamental vale como autorização, e a validação do Tesoureiro faz-se no momento do registo e da reconciliação. O cartão não dá acesso a outras contas nem permite operações acima dos limites (n.º 9.3.4).</p>
+      <p><strong>Débitos diretos e outros pagamentos automáticos</strong> <span class="suave">(n.º 9.3.3, a)</span> — a dupla autorização exerce-se uma única vez, na constituição do mandato de débito, e não em cada cobrança.</p>
+      <p>Em ambos os casos o Tesoureiro assegura, com o secretariado, o registo e a reconciliação de todos os movimentos, que vão ao balancete apresentado à CFP (n.º 9.3.5).</p>
     </div>
-  </div>
+  </details>
 
-  <h3>E as compras do dia a dia?</h3>
-  <div class="cartao" style="border-left:5px solid var(--ardosia)">
-    <p style="font-size:.92rem">Hoje, se houver um almoço na Igreja ou uma obra a decorrer, o pastor ou um responsável de ministério vai comprar o que falta. É a pergunta prática que mais surge na leitura da proposta: <em>«isso passa a ter de ser aprovado pelo Tesoureiro?»</em></p>
-    <p style="font-size:.92rem"><strong>Não — o Tesoureiro não aprova despesas.</strong> Quem autoriza é o Presbitério (art. 25.º, n.º 6, d); ao Tesoureiro compete <em>validar</em> os pagamentos já autorizados, verificando autorização, documento de despesa e cabimento orçamental (n.º 9.1). O n.º 9.4 é expresso em sentido contrário: o Tesoureiro <strong>não pode</strong> autorizar despesa. Não é um guardião que aprova — é um conferente que confirma que alguém aprovou antes.</p>
-    <p style="font-size:.92rem"><strong>A dificuldade era outra, e ficou resolvida.</strong> Uma compra feita no momento não tem autorização prévia; e se for paga com cartão da Igreja, colide com a exigência de duas autorizações do n.º 9.3. A proposta passou a prever três caminhos, consoante o caso:</p>
-    <ul style="padding-left:1.2rem;font-size:.9rem">
-      <li style="margin:.3rem 0"><strong>Fundo de maneio</strong> (art. 25.º, n.º 13), para necessidades correntes e imediatas. O Presbitério designa quem o guarda e quem pode gastar dele, de entre oficiais, funcionários e responsáveis de ministério; os montantes ficam no Regulamento Interno. Cada despesa exige documento, sob pena de responsabilidade pessoal, e é proibido fracionar despesas para as fazer caber nos limites.</li>
-      <li style="margin:.3rem 0"><strong>Instrumento de pagamento do secretariado</strong> (n.º 9.3.3, b), para despesa já aprovada em orçamento e dentro de limites. Nesse caso, a aprovação orçamental vale como autorização e a validação do Tesoureiro faz-se no momento do registo e da reconciliação.</li>
-      <li style="margin:.3rem 0"><strong>Débitos diretos</strong> (n.º 9.3.3, a), em que a dupla autorização se exerce uma única vez, na constituição do mandato.</li>
-    </ul>
-    <p style="font-size:.92rem">Para a urgência que exceda os limites do fundo, dois presbíteros podem autorizar a despesa, com ratificação na reunião seguinte (n.º 13.8). Em todos os casos o Tesoureiro regista e reconcilia os movimentos, que vão ao balancete apresentado à CFP (n.os 9.3.5 e 13.7).</p>
-    <p style="font-size:.92rem"><strong>Como enquadrar isto.</strong> Vale a pena notar que a autonomia atual também não tem base nos Estatutos vigentes: o art. 17.º, n.º 6, d) atribui «gerir pagamentos a fornecedores» ao <em>Presbitério</em>, não ao pastor. É o mesmo fenómeno que o Anexo Técnico, §4 descreve a propósito da tesouraria — uma prática que cresceu num vazio normativo, sem irregularidade de ninguém. A diferença é que hoje nada confere, e por isso o vazio não se nota. <strong>A proposta não cria o problema: revela-o — e resolve-o.</strong></p>
-  </div>
-
-  <h3>De onde vem a prática atual</h3>
-  <div class="cartao" style="border-left:5px solid var(--azul)">
-    <p style="font-size:.92rem">A palavra «tesoureiro» <strong>não consta dos Estatutos vigentes</strong>: a tesouraria não estava atribuída a ninguém. A função migrou para o Representante dos Diáconos por via do artigo 17.º, n.º 5, que lhe dava a segunda assinatura nos atos e contratos — quem assina acaba, na prática, por gerir.</p>
-    <p style="font-size:.92rem"><strong>Não houve irregularidade de ninguém: houve uma prática que cresceu num vazio normativo.</strong> É diferente, e é muito comum. A proposta preenche esse vazio — passa a estar escrito quem valida, quem executa, quem fiscaliza e como cessa funções quem guarda as chaves. <span class="suave">(Anexo Técnico, §4)</span></p>
-  </div>
+  <details class="acordeao">
+    <summary>De onde vem a prática atual — e porque não houve irregularidade de ninguém</summary>
+    <div class="interior">
+      <p>A palavra «tesoureiro» <strong>não consta dos Estatutos vigentes</strong>: a tesouraria não estava atribuída a ninguém. A função migrou para o Representante dos Diáconos por via do artigo 17.º, n.º 5, que lhe dava a segunda assinatura nos atos e contratos — quem assina acaba, na prática, por gerir. Retirar o diácono da assinatura dos contratos e colocá-lo apenas na movimentação bancária fecha a porta por onde essa prática entrou.</p>
+      <p>O mesmo vale para as compras do dia a dia: a autonomia atual também não tem base nos Estatutos vigentes, porque o art. 17.º, n.º 6, d) atribui «gerir pagamentos a fornecedores» ao <em>Presbitério</em>, não ao pastor. A diferença é que hoje nada confere, e por isso o vazio não se nota.</p>
+      <p><strong>Não houve irregularidade de ninguém: houve uma prática que cresceu num vazio normativo.</strong> É diferente, e é muito comum. A proposta não cria o problema — revela-o e resolve-o. <span class="suave">(Anexo Técnico, §4)</span></p>
+    </div>
+  </details>
 </section>
 
 <!-- ================= 5. OFÍCIOS ================= -->
